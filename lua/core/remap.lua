@@ -29,7 +29,7 @@ vim.keymap.set('n', '<leader>p', '<C-PageUp>', { silent = true })
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>', { silent = true })
 vim.keymap.set('n', '<leader><tab>', ':bp<CR>', { silent = true })
 
---- explorer
+-- explorer
 vim.keymap.set('n', '<leader>E', ':Ex<CR>', { silent = true })
 
 -- commentary
