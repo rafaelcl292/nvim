@@ -34,3 +34,13 @@ vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true })
 vim.keymap.set('n', '<c-_>', ':Commentary<CR>', { silent = true })
 vim.keymap.set('v', '<c-_>', ":'<,'>Commentary<CR>", { silent = true })
 
+-- move in visual mode
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
+
+-- cursor in middle
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
+vim.keymap.set('n', 'n', 'nzz', { silent = true })
+vim.keymap.set('n', 'N', 'Nzz', { silent = true })
+
