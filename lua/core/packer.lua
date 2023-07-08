@@ -71,7 +71,6 @@ return require('packer').startup(function(use)
         'saadparwaiz1/cmp_luasnip',
     }
 
-    -- auto pairs
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
@@ -81,11 +80,11 @@ return require('packer').startup(function(use)
 
     use 'christoomey/vim-tmux-navigator'
 
-    -- vim be good the primeagen
     use 'ThePrimeagen/vim-be-good'
 
-    -- commentary
     use 'tpope/vim-commentary'
+
+    use 'tpope/vim-unimpaired'
 
 end)
 

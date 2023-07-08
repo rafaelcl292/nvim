@@ -195,6 +195,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rafael/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["vim-unimpaired"] = {
+    loaded = true,
+    path = "/home/rafael/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
+    url = "https://github.com/tpope/vim-unimpaired"
   }
 }
 
