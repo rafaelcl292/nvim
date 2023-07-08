@@ -4,8 +4,8 @@ local function on_attach(bufnr)
     local function opts(desc)
         return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
+    vim.keymap.set('n', 'g?',    api.tree.toggle_help,                  opts('Help'))
     vim.keymap.set('n', 'i',     api.node.show_info_popup,              opts('Info'))
-    vim.keymap.set('n', '<C-r>', api.fs.rename_sub,                     opts('Rename: Omit Filename'))
     vim.keymap.set('n', 't',     api.node.open.tab,                     opts('Open: New Tab'))
     vim.keymap.set('n', '<BS>',  api.node.navigate.parent_close,        opts('Close Directory'))
     vim.keymap.set('n', '<CR>',  api.node.open.edit,                    opts('Open'))
