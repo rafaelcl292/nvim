@@ -66,8 +66,11 @@ require("nvim-tree").setup({
             max = vim.diagnostic.severity.ERROR,
         },
     },
+    git = {
+        enable = false,
+    },
 })
 
 
-vim.keymap.set('n', '<leader>E', ':NvimTreeFindFileToggle<CR>', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>', { silent = true, noremap = true })
 

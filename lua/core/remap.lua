@@ -8,7 +8,8 @@ vim.keymap.set('i', '<c-l>', '<Esc>:TmuxNavigateRight<CR>', { silent = true })
 
 -- quit
 vim.keymap.set('n', '<leader>q', ':q<CR>', { silent = true })
-vim.keymap.set('n', '<leader>Q', ':qa!<CR>', { silent = true })
+vim.keymap.set('n', '<leader>Q', ':qa<CR>', { silent = true })
+vim.keymap.set('n', '<leader>!', ':qa!<CR>', { silent = true })
 
 -- visual block
 vim.keymap.set('n', '<leader>v', '<C-v>', { silent = true })
@@ -26,9 +27,10 @@ vim.keymap.set('n', '<leader>m', '<C-w>T', { silent = true })
 vim.keymap.set('n', '<leader>n', '<C-PageDown>', { silent = true })
 vim.keymap.set('n', '<leader>p', '<C-PageUp>', { silent = true })
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>', { silent = true })
+vim.keymap.set('n', '<leader><tab>', ':bp<CR>', { silent = true })
 
 --- explorer
-vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true })
+vim.keymap.set('n', '<leader>E', ':Ex<CR>', { silent = true })
 
 -- commentary
 vim.keymap.set('n', '<c-_>', ':Commentary<CR>', { silent = true })
