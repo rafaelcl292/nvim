@@ -10,6 +10,7 @@ vim.keymap.set('i', '<c-l>', '<Esc>:TmuxNavigateRight<CR>', { silent = true })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { silent = true })
 vim.keymap.set('n', '<leader>Q', ':qa<CR>', { silent = true })
 vim.keymap.set('n', '<leader>!', ':qa!<CR>', { silent = true })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { silent = true })
 
 -- visual block
 vim.keymap.set('n', '<leader>v', '<C-v>', { silent = true })

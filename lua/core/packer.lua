@@ -71,6 +71,8 @@ return require('packer').startup(function(use)
         'saadparwaiz1/cmp_luasnip',
     }
 
+    use { 'jose-elias-alvarez/null-ls.nvim' }
+
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
