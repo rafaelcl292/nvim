@@ -89,5 +89,6 @@ return require('packer').startup(function(use)
 
     use 'tpope/vim-unimpaired'
 
+    use 'lewis6991/gitsigns.nvim'
 end)
 

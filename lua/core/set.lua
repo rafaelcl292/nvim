@@ -13,7 +13,9 @@ vim.opt.termguicolors = true
 
 vim.opt.clipboard = 'unnamedplus'
 
-vim.opt.scrolloff = 10
+-- vim.opt.scrolloff = 10
+-- vim.opt.scrolloff = 999
+vim.opt.scrolloff = 0
 
 vim.opt.whichwrap = 'b,s,<,>,[,],h,l'
 vim.opt.wrap = false

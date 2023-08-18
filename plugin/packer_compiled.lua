@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/rafael/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/rafael/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/rafael/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",

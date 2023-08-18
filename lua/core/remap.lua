@@ -28,7 +28,7 @@ vim.keymap.set('n', '<leader>m', '<C-w>T', { silent = true })
 vim.keymap.set('n', '<leader>n', '<C-PageDown>', { silent = true })
 vim.keymap.set('n', '<leader>p', '<C-PageUp>', { silent = true })
 vim.keymap.set('n', '<leader>t', ':tabnew<CR>', { silent = true })
-vim.keymap.set('n', '<leader><tab>', ':bp<CR>', { silent = true })
+vim.keymap.set('n', '<leader><tab>', '<C-^>', { silent = true })
 
 -- explorer
 vim.keymap.set('n', '<leader>E', ':Ex<CR>', { silent = true })
@@ -36,14 +36,19 @@ vim.keymap.set('n', '<leader>E', ':Ex<CR>', { silent = true })
 -- commentary
 vim.keymap.set('n', '<c-_>', ':Commentary<CR>', { silent = true })
 vim.keymap.set('v', '<c-_>', ":'<,'>Commentary<CR>", { silent = true })
+vim.keymap.set('i', '<c-_>', '<Esc>:Commentary<CR>', { silent = true })
 
 -- move in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- cursor in middle
+vim.keymap.set('n', '<leader>z', 'zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 vim.keymap.set('n', 'n', 'nzz', { silent = true })
 vim.keymap.set('n', 'N', 'Nzz', { silent = true })
+vim.keymap.set('n', 'j', 'jzz', { silent = true })
+vim.keymap.set('n', 'k', 'kzz', { silent = true })
+vim.keymap.set('n', 'G', 'Gzz', { silent = true })
 
