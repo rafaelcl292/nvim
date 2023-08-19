@@ -38,6 +38,9 @@ vim.keymap.set('n', '<c-_>', ':Commentary<CR>', { silent = true })
 vim.keymap.set('v', '<c-_>', ":'<,'>Commentary<CR>", { silent = true })
 vim.keymap.set('i', '<c-_>', '<Esc>:Commentary<CR>', { silent = true })
 
+-- undo tree
+vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', { silent = true })
+
 -- move in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
