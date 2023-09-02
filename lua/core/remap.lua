@@ -55,3 +55,12 @@ vim.keymap.set('n', 'j', 'jzz', { silent = true })
 vim.keymap.set('n', 'k', 'kzz', { silent = true })
 vim.keymap.set('n', 'G', 'Gzz', { silent = true })
 
+-- paste without losing register
+vim.keymap.set('n', '<leader>p', '\"_dP', { silent = true })
+vim.keymap.set('v', '<leader>p', '\"_dP', { silent = true })
+
+-- select all
+vim.keymap.set('n', '<C-a>', 'ggVG', { silent = true })
+vim.keymap.set('v', '<C-a>', 'ggVG', { silent = true })
+vim.keymap.set('i', '<C-a>', '<Esc>ggVG', { silent = true })
+
