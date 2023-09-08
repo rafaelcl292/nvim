@@ -18,7 +18,7 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.scrolloff = 0
 
 vim.opt.whichwrap = 'b,s,<,>,[,],h,l'
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.signcolumn = 'yes'
 
