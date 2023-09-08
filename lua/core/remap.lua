@@ -65,7 +65,7 @@ vim.keymap.set('v', '<leader>p', '\"_dP', { silent = true })
 -- select all
 vim.keymap.set('n', '<leader>a', 'ggVGzz', { silent = true })
 vim.keymap.set('v', '<leader>a', 'ggVGzz', { silent = true })
-vim.keymap.set('i', '<leader>a', '<Esc>ggVGzz', { silent = true })
+vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
 vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>', { silent = true })
