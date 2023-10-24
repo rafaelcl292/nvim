@@ -4,7 +4,7 @@ lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr }
     local bind = vim.keymap.set
     bind('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    bind('n', '<leader>s', function ()
+    bind('n', '<leader>s', function()
         vim.lsp.buf.format { async = true }
     end, opts)
     bind('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -89,4 +89,3 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
-

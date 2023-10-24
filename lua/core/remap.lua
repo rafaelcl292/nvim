@@ -74,4 +74,3 @@ vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
 vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>', { silent = true })
-
