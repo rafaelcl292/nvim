@@ -22,7 +22,7 @@ vim.keymap.set('n', '<leader>k', ':sp<CR>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':vsp<CR>:wincmd l<CR>', { silent = true })
 
 -- maximize
-vim.keymap.set('n', '<leader>m', '<C-w>T', { silent = true })
+vim.keymap.set('n', '<leader>m', '<C-w>o', { silent = true })
 
 -- file buffers
 vim.keymap.set('n', '<leader>n', '<C-PageDown>', { silent = true })
@@ -49,18 +49,23 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 vim.keymap.set('n', '<leader>z', 'zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
-vim.keymap.set('n', 'n', 'nzz', { silent = true })
-vim.keymap.set('n', 'N', 'Nzz', { silent = true })
+-- vim.keymap.set('n', 'n', 'nzz', { silent = true })
+-- vim.keymap.set('n', 'N', 'Nzz', { silent = true })
 -- vim.keymap.set('n', 'j', 'jzz', { silent = true })
 -- vim.keymap.set('n', 'k', 'kzz', { silent = true })
-vim.keymap.set('v', 'j', 'jzz', { silent = true })
-vim.keymap.set('v', 'k', 'kzz', { silent = true })
+-- vim.keymap.set('v', 'j', 'jzz', { silent = true })
+-- vim.keymap.set('v', 'k', 'kzz', { silent = true })
 vim.keymap.set('v', 'o', 'ozz', { silent = true })
 vim.keymap.set('n', 'G', 'Gzz', { silent = true })
+vim.keymap.set('n', '{', '{zz', { silent = true })
+vim.keymap.set('n', '}', '}zz', { silent = true })
 
 -- paste without losing register
-vim.keymap.set('n', '<leader>p', '\"_dP', { silent = true })
-vim.keymap.set('v', '<leader>p', '\"_dP', { silent = true })
+vim.keymap.set('n', '<leader>P', '\"_dP', { silent = true })
+vim.keymap.set('v', '<leader>P', '\"_dP', { silent = true })
+-- paste from yank register
+vim.keymap.set('n', '<leader>p', '\"0p', { silent = true })
+vim.keymap.set('v', '<leader>p', '\"0p', { silent = true })
 
 -- select all
 vim.keymap.set('n', '<leader>a', 'ggVGzz', { silent = true })
