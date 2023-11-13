@@ -63,9 +63,13 @@ vim.keymap.set('n', '}', '}zz', { silent = true })
 -- paste without losing register
 vim.keymap.set('n', '<leader>P', '\"_dP', { silent = true })
 vim.keymap.set('v', '<leader>P', '\"_dP', { silent = true })
--- paste from yank register
-vim.keymap.set('n', '<leader>p', '\"0p', { silent = true })
-vim.keymap.set('v', '<leader>p', '\"0p', { silent = true })
+-- paste from clipboard
+vim.keymap.set('n', '<leader>p', '\"+p', { silent = true })
+vim.keymap.set('v', '<leader>p', '\"+p', { silent = true })
+-- yank to clipboard
+vim.keymap.set('n', '<leader>y', '\"+y', { silent = true })
+vim.keymap.set('v', '<leader>y', '\"+y', { silent = true })
+
 
 -- select all
 vim.keymap.set('n', '<leader>a', 'ggVGzz', { silent = true })
