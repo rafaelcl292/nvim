@@ -25,9 +25,9 @@ vim.keymap.set('n', '<leader>l', ':vsp<CR>:wincmd l<CR>', { silent = true })
 vim.keymap.set('n', '<leader>m', '<C-w>o', { silent = true })
 
 -- file buffers
-vim.keymap.set('n', '<leader>n', '<C-PageDown>', { silent = true })
-vim.keymap.set('n', '<leader>p', '<C-PageUp>', { silent = true })
-vim.keymap.set('n', '<leader>t', ':tabnew<CR>', { silent = true })
+-- vim.keymap.set('n', '<leader>n', '<C-PageDown>', { silent = true })
+-- vim.keymap.set('n', '<leader>p', '<C-PageUp>', { silent = true })
+-- vim.keymap.set('n', '<leader>t', ':tabnew<CR>', { silent = true })
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { silent = true })
 
 -- explorer
@@ -77,4 +77,4 @@ vim.keymap.set('v', '<leader>a', 'ggVGzz', { silent = true })
 vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
-vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>', { silent = true })
+vim.keymap.set('n', '<leader>S', ':%s//<Left>', { silent = true })

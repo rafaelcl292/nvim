@@ -92,4 +92,8 @@ return require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim'
 
     use 'mbbill/undotree'
+
+    use "akinsho/toggleterm.nvim"
+
+    use "inkarkat/vim-CursorLineCurrentWindow"
 end)
