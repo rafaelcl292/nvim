@@ -9,7 +9,7 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set('n', '<leader>t', ':ToggleTerm direction=horizontal size=14<CR>', { noremap = true })
 
 -- togle terminal vertically
-vim.keymap.set('n', '<leader>T', ':ToggleTerm direction=vertical size=40<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>T', ':ToggleTerm direction=vertical size=42<CR>', { noremap = true })
 
 -- new horizontal terminal
 vim.keymap.set('n', '<leader>nt',
