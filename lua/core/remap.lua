@@ -46,7 +46,7 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- cursor in middle
-vim.keymap.set('n', '<leader>z', 'zz', { silent = true })
+-- vim.keymap.set('n', '<leader>z', 'zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 -- vim.keymap.set('n', 'n', 'nzz', { silent = true })
@@ -57,8 +57,8 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 -- vim.keymap.set('v', 'k', 'kzz', { silent = true })
 vim.keymap.set('v', 'o', 'ozz', { silent = true })
 vim.keymap.set('n', 'G', 'Gzz', { silent = true })
-vim.keymap.set('n', '{', '{zz', { silent = true })
-vim.keymap.set('n', '}', '}zz', { silent = true })
+-- vim.keymap.set('n', '{', '{zz', { silent = true })
+-- vim.keymap.set('n', '}', '}zz', { silent = true })
 
 -- paste without losing register
 vim.keymap.set('n', '<leader>P', '\"_dP', { silent = true })
@@ -77,4 +77,4 @@ vim.keymap.set('v', '<leader>a', 'ggVGzz', { silent = true })
 vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
-vim.keymap.set('n', '<leader>S', ':%s//<Left>', { silent = true })
+vim.keymap.set('n', '<leader>s', ':%s//<Left>', { silent = true })
