@@ -35,6 +35,7 @@ local function on_attach(bufnr)
     vim.keymap.set('n', 'x',     api.fs.cut,                            opts('Cut'))
     vim.keymap.set('n', 'y',     api.fs.copy.filename,                  opts('Copy Name'))
     vim.keymap.set('n', 'Y',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
+    vim.keymap.set('n', '<Esc>', api.tree.close,                        opts('Close'))
 end
 
 require("nvim-tree").setup({
