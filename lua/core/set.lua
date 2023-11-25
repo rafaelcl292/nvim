@@ -41,11 +41,8 @@ vim.opt.cursorline = true
 vim.opt.autoindent = true
 
 -- vim.opt.colorcolumn = '80'
-
--- turn on highlight on yank
-vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {}'
-
-vim.g.mapleader = " "
-
 -- disable mouse
 -- vim.opt.mouse = ''
+
+-- leader key
+vim.g.mapleader = ' '

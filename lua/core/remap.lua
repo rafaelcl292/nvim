@@ -17,9 +17,9 @@ vim.keymap.set('n', '<leader>v', '<C-v>', { silent = true })
 
 -- splits
 vim.keymap.set('n', '<leader>h', ':vnew<CR>', { silent = true })
-vim.keymap.set('n', '<leader>j', ':new<CR><C-w>J', { silent = true })
+vim.keymap.set('n', '<leader>j', ':new<CR><C-w><C-r>', { silent = true })
 vim.keymap.set('n', '<leader>k', ':new<CR>', { silent = true })
-vim.keymap.set('n', '<leader>l', ':vnew<CR><C-w>L', { silent = true })
+vim.keymap.set('n', '<leader>l', ':vnew<CR><C-w><C-r>', { silent = true })
 -- resize
 vim.keymap.set('n', '<S-Left>', '<C-w>>', { silent = true })
 vim.keymap.set('n', '<S-Down>', '<C-w>-', { silent = true })
