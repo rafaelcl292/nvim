@@ -16,21 +16,31 @@ vim.keymap.set('n', '<leader>w', ':w<CR>', { silent = true })
 vim.keymap.set('n', '<leader>v', '<C-v>', { silent = true })
 
 -- splits
-vim.keymap.set('n', '<leader>h', ':vsp<CR>', { silent = true })
-vim.keymap.set('n', '<leader>j', ':sp<CR>:wincmd j<CR>', { silent = true })
-vim.keymap.set('n', '<leader>k', ':sp<CR>', { silent = true })
-vim.keymap.set('n', '<leader>l', ':vsp<CR>:wincmd l<CR>', { silent = true })
+vim.keymap.set('n', '<leader>h', ':vnew<CR>', { silent = true })
+vim.keymap.set('n', '<leader>j', ':new<CR><C-w>J', { silent = true })
+vim.keymap.set('n', '<leader>k', ':new<CR>', { silent = true })
+vim.keymap.set('n', '<leader>l', ':vnew<CR><C-w>L', { silent = true })
+-- resize
+vim.keymap.set('n', '<S-Left>', '<C-w>>', { silent = true })
+vim.keymap.set('n', '<S-Down>', '<C-w>-', { silent = true })
+vim.keymap.set('n', '<S-Up>', '<C-w>+', { silent = true })
+vim.keymap.set('n', '<S-Right>', '<C-w><', { silent = true })
+
 
 -- maximize
 vim.keymap.set('n', '<leader>m', '<C-w>o', { silent = true })
 
 -- file buffers
--- vim.keymap.set('n', '<leader>n', '<C-PageDown>', { silent = true })
--- vim.keymap.set('n', '<leader>p', '<C-PageUp>', { silent = true })
--- vim.keymap.set('n', '<leader>t', ':tabnew<CR>', { silent = true })
+vim.keymap.set('n', '<leader>1', ':1tabnext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>2', ':2tabnext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>3', ':3tabnext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>4', ':4tabnext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>5', ':5tabnext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>6', ':6tabnext<CR>', { silent = true })
+
 vim.keymap.set('n', '<leader><tab>', '<C-^>', { silent = true })
 
--- explorer
+-- explore
 vim.keymap.set('n', '<leader>E', ':Ex<CR>', { silent = true })
 
 -- commentary
