@@ -5,7 +5,7 @@ lsp.on_attach(function(_, bufnr)
     local bind = vim.keymap.set
     bind('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     bind('n', '<C-s>', function()
-        vim.lsp.buf.format { async = true }
+        vim.lsp.buf.format { async = false }
         vim.cmd('write')
     end, opts)
     bind('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
