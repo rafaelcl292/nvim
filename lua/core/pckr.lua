@@ -86,8 +86,6 @@ require('pckr').add {
 
     'github/copilot.vim',
 
-    'christoomey/vim-tmux-navigator',
-
     'ThePrimeagen/vim-be-good',
 
     'tpope/vim-commentary',

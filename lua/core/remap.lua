@@ -1,10 +1,18 @@
 vim.keymap.set("n", "<leader>;", vim.cmd.noh)
 
 -- Navigate vim panes better
-vim.keymap.set('i', '<c-k>', '<Esc>:TmuxNavigateUp<CR>', { silent = true })
-vim.keymap.set('i', '<c-j>', '<Esc>:TmuxNavigateDown<CR>', { silent = true })
-vim.keymap.set('i', '<c-h>', '<Esc>:TmuxNavigateLeft<CR>', { silent = true })
-vim.keymap.set('i', '<c-l>', '<Esc>:TmuxNavigateRight<CR>', { silent = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+vim.keymap.set("v", "<C-h>", "<C-w>h", { silent = true })
+vim.keymap.set("v", "<C-j>", "<C-w>j", { silent = true })
+vim.keymap.set("v", "<C-k>", "<C-w>k", { silent = true })
+vim.keymap.set("v", "<C-l>", "<C-w>l", { silent = true })
+vim.keymap.set('i', '<c-k>', '<Esc>:wincmd k<CR>', { silent = true })
+vim.keymap.set('i', '<c-j>', '<Esc>:wincmd j<CR>', { silent = true })
+vim.keymap.set('i', '<c-h>', '<Esc>:wincmd h<CR>', { silent = true })
+vim.keymap.set('i', '<c-l>', '<Esc>:wincmd l<CR>', { silent = true })
 
 -- quit
 vim.keymap.set('n', '<leader>q', ':q<CR>', { silent = true })
@@ -87,7 +95,7 @@ vim.keymap.set('v', '<leader>a', 'ggVGzz', { silent = true })
 vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
-vim.keymap.set('n', '<leader>s', ':%s//<Left>', { silent = true })
+vim.keymap.set('n', '<leader>S', ':%s//<Left>', { silent = true })
 
 -- exit terminal with ESC
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
