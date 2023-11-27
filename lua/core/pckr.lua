@@ -1,24 +1,16 @@
--- vim.cmd.packadd('packer.nvim')
--- return require('packer').startup(function(use)
---     -- Packer can manage itself
--- 'wbthomason/packer.nvim',
-local function bootstrap_pckr()
-    local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 
-    if not vim.loop.fs_stat(pckr_path) then
-        vim.fn.system({
-            'git',
-            'clone',
-            "--filter=blob:none",
-            'https://github.com/lewis6991/pckr.nvim',
-            pckr_path
-        })
-    end
-
-    vim.opt.rtp:prepend(pckr_path)
+if not vim.loop.fs_stat(pckr_path) then
+    vim.fn.system({
+        'git',
+        'clone',
+        "--filter=blob:none",
+        'https://github.com/lewis6991/pckr.nvim',
+        pckr_path
+    })
 end
 
-bootstrap_pckr()
+vim.opt.rtp:prepend(pckr_path)
 
 require('pckr').add {
     {
@@ -42,12 +34,8 @@ require('pckr').add {
         requires = {
             'nvim-tree/nvim-web-devicons',
             'p00f/nvim-ts-rainbow',
+            'nvim-lualine/lualine.nvim'
         },
-    },
-
-    {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     },
 
     {
@@ -109,8 +97,6 @@ require('pckr').add {
     'lewis6991/gitsigns.nvim',
 
     'mbbill/undotree',
-
-    "akinsho/toggleterm.nvim",
 
     "inkarkat/vim-CursorLineCurrentWindow",
 }

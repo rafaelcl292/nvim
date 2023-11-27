@@ -59,8 +59,8 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 -- vim.keymap.set('n', '<leader>z', 'zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
--- vim.keymap.set('n', 'n', 'nzz', { silent = true })
--- vim.keymap.set('n', 'N', 'Nzz', { silent = true })
+vim.keymap.set('n', 'n', 'nzz', { silent = true })
+vim.keymap.set('n', 'N', 'Nzz', { silent = true })
 -- vim.keymap.set('n', 'j', 'jzz', { silent = true })
 -- vim.keymap.set('n', 'k', 'kzz', { silent = true })
 -- vim.keymap.set('v', 'j', 'jzz', { silent = true })
@@ -88,3 +88,6 @@ vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
 vim.keymap.set('n', '<leader>s', ':%s//<Left>', { silent = true })
+
+-- exit terminal with ESC
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })

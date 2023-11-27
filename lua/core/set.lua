@@ -40,6 +40,11 @@ vim.opt.cursorline = true
 
 vim.opt.autoindent = true
 
+-- vim.opt.winbar = "%=%m %f"
+vim.opt.laststatus = 3
+
+-- insert prontomode cursor
+
 -- vim.opt.colorcolumn = '80'
 -- disable mouse
 -- vim.opt.mouse = ''
