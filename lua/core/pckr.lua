@@ -97,4 +97,6 @@ require('pckr').add {
     'mbbill/undotree',
 
     "inkarkat/vim-CursorLineCurrentWindow",
+
+    "stevearc/oil.nvim",
 }

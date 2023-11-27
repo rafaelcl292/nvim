@@ -65,22 +65,23 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- cursor in middle
 -- vim.keymap.set('n', '<leader>z', 'zz', { silent = true })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
-vim.keymap.set('n', 'n', 'nzz', { silent = true })
-vim.keymap.set('n', 'N', 'Nzz', { silent = true })
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 -- vim.keymap.set('n', 'j', 'jzz', { silent = true })
 -- vim.keymap.set('n', 'k', 'kzz', { silent = true })
 -- vim.keymap.set('v', 'j', 'jzz', { silent = true })
 -- vim.keymap.set('v', 'k', 'kzz', { silent = true })
-vim.keymap.set('v', 'o', 'ozz', { silent = true })
-vim.keymap.set('n', 'G', 'Gzz', { silent = true })
 -- vim.keymap.set('n', '{', '{zz', { silent = true })
 -- vim.keymap.set('n', '}', '}zz', { silent = true })
+vim.keymap.set('v', 'o', 'ozz', { silent = true })
+vim.keymap.set('n', 'G', 'Gzz', { silent = true })
+vim.keymap.set('n', 'n', 'nzz', { silent = true })
+vim.keymap.set('n', 'N', 'Nzz', { silent = true })
 
 -- paste without losing register
-vim.keymap.set('n', '<leader>P', '\"_dP', { silent = true })
-vim.keymap.set('v', '<leader>P', '\"_dP', { silent = true })
+vim.keymap.set('v', 'p', '\"_dP', { silent = true })
+-- paste and copy
+vim.keymap.set('v', '<leader>P', 'p', { silent = true })
 -- paste from clipboard
 vim.keymap.set('n', '<leader>p', '\"+p', { silent = true })
 vim.keymap.set('v', '<leader>p', '\"+p', { silent = true })

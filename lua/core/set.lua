@@ -11,22 +11,6 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
--- wsl clipboard
-vim.g.clipboard = {
-    name = 'WslClipboard',
-    copy = {
-        ['+'] = 'clip.exe',
-        ['*'] = 'clip.exe',
-    },
-    paste = {
-        ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-        ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    },
-    cache_enabled = 0
-}
-
--- vim.opt.scrolloff = 10
--- vim.opt.scrolloff = 999
 vim.opt.scrolloff = 0
 
 vim.opt.whichwrap = 'b,s,<,>,[,],h,l'
@@ -42,12 +26,23 @@ vim.opt.autoindent = true
 
 -- vim.opt.winbar = "%=%m %f"
 vim.opt.laststatus = 3
-
--- insert prontomode cursor
+vim.opt.cmdheight = 0
 
 -- vim.opt.colorcolumn = '80'
--- disable mouse
--- vim.opt.mouse = ''
+
+-- wsl clipboard
+vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+        ['+'] = 'clip.exe',
+        ['*'] = 'clip.exe',
+    },
+    paste = {
+        ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0
+}
 
 -- leader key
 vim.g.mapleader = ' '
