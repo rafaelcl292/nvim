@@ -21,10 +21,12 @@ require('pckr').add {
         }
     },
 
+    'catppuccin/nvim',
+    'folke/tokyonight.nvim',
     {
-        'catppuccin/nvim',
+        'rebelot/kanagawa.nvim',
         config = function()
-            vim.cmd('colorscheme catppuccin-mocha')
+            vim.cmd('colorscheme kanagawa-dragon')
         end
     },
 
