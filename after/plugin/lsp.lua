@@ -9,7 +9,7 @@ lsp.on_attach(function(_, bufnr)
         vim.cmd('write')
     end, opts)
     bind('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    bind('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    bind('n', '<leader>i', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
 end)
 
 lsp.setup()
