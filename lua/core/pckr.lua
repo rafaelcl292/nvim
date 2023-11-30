@@ -1,10 +1,10 @@
-local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+local pckr_path = vim.fn.stdpath('data') .. '/pckr/pckr.nvim'
 
 if not vim.loop.fs_stat(pckr_path) then
     vim.fn.system({
         'git',
         'clone',
-        "--filter=blob:none",
+        '--filter=blob:none',
         'https://github.com/lewis6991/pckr.nvim',
         pckr_path
     })
@@ -72,8 +72,8 @@ require('pckr').add {
     { 'jose-elias-alvarez/null-ls.nvim' },
 
     {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup {} end
     },
 
     'github/copilot.vim',
@@ -84,9 +84,11 @@ require('pckr').add {
 
     'tpope/vim-unimpaired',
 
+    'tpope/vim-surround',
+
     'lewis6991/gitsigns.nvim',
 
-    "inkarkat/vim-CursorLineCurrentWindow",
+    'inkarkat/vim-CursorLineCurrentWindow',
 
-    "stevearc/oil.nvim",
+    'stevearc/oil.nvim',
 }
