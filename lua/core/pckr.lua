@@ -15,7 +15,6 @@ vim.opt.rtp:prepend(pckr_path)
 require('pckr').add {
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
-        -- or                            , branch = '0.1.x',
         requires = {
             'nvim-lua/plenary.nvim',
             'nvim-tree/nvim-web-devicons',
@@ -27,15 +26,6 @@ require('pckr').add {
         config = function()
             vim.cmd('colorscheme catppuccin-mocha')
         end
-    },
-
-    {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons',
-            'p00f/nvim-ts-rainbow',
-            'nvim-lualine/lualine.nvim'
-        },
     },
 
     {
@@ -93,8 +83,6 @@ require('pckr').add {
     'tpope/vim-unimpaired',
 
     'lewis6991/gitsigns.nvim',
-
-    'mbbill/undotree',
 
     "inkarkat/vim-CursorLineCurrentWindow",
 
