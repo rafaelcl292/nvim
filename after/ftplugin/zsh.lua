@@ -1,1 +1,1 @@
-vim.opt.formatoptions = 'tcqj'
+-- vim.opt.formatoptions = 'tcqj'

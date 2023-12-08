@@ -7,6 +7,10 @@ vim.keymap.set('i', "<C-h>", "<Esc><C-w>h", { silent = true })
 vim.keymap.set('i', "<C-j>", "<Esc><C-w>j", { silent = true })
 vim.keymap.set('i', "<C-k>", "<Esc><C-w>k", { silent = true })
 vim.keymap.set('i', "<C-l>", "<Esc><C-w>l", { silent = true })
+vim.keymap.set('t', "<C-h>", "<C-\\><C-n><C-w>h", { silent = true })
+vim.keymap.set('t', "<C-j>", "<C-\\><C-n><C-w>j", { silent = true })
+vim.keymap.set('t', "<C-k>", "<C-\\><C-n><C-w>k", { silent = true })
+vim.keymap.set('t', "<C-_>", "<C-\\><C-n><C-w>l", { silent = true })
 
 -- quit
 vim.keymap.set({ 'n', 'v' }, '<leader>q', ':q<CR>', { silent = true })
@@ -22,30 +26,29 @@ vim.keymap.set({ 'n', 'v' }, '<leader>h', ':vnew<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>j', ':new<CR><C-w><C-r>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>k', ':new<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>l', ':vnew<CR><C-w><C-r>', { silent = true })
+-- splits with resize
+vim.keymap.set({ 'n', 'v' }, '<leader>H', '0:vnew<CR>:vertical resize -30<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>J', '0:new<CR><C-w><C-r>:resize -8<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>K', '0:new<CR>:resize -8<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>L', '0:vnew<CR><C-w><C-r>:vertical resize -30<CR>', { silent = true })
+
 -- resize
-vim.keymap.set({ 'n', 'v' }, '<S-Left>', '<C-w>>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<S-Down>', '<C-w>-', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<S-Up>', '<C-w>+', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<S-Right>', '<C-w><', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<Left>', ':vertical resize -3<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<Down>', ':resize +3<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<Up>', ':resize -3<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<Right>', ':vertical resize +3<CR>', { silent = true })
 
 
 -- maximize
 vim.keymap.set({ 'n', 'v' }, '<leader>m', '<C-w>o', { silent = true })
 
--- file buffers
-vim.keymap.set('n', '<leader>1', ':1tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<leader>2', ':2tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<leader>3', ':3tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<leader>4', ':4tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<leader>5', ':5tabnext<CR>', { silent = true })
-vim.keymap.set('n', '<leader>6', ':6tabnext<CR>', { silent = true })
-
-vim.keymap.set({ 'n', 'v' }, '<leader><tab>', '<C-^>', { silent = true })
+-- terminal
+vim.keymap.set({ 'n', 'v' }, '<leader>t', ':terminal<CR>', { silent = true })
 
 -- commentary
-vim.keymap.set('n', '<c-_>', ':Commentary<CR>', { silent = true })
-vim.keymap.set('v', '<c-_>', ":'<,'>Commentary<CR>", { silent = true })
-vim.keymap.set('i', '<c-_>', '<Esc>:Commentary<CR>', { silent = true })
+vim.keymap.set('n', '<C-_>', ':Commentary<CR>', { silent = true })
+vim.keymap.set('v', '<C-_>', ":'<,'>Commentary<CR>", { silent = true })
+vim.keymap.set('i', '<C-_>', '<Esc>:Commentary<CR>', { silent = true })
 
 -- move in visual mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
@@ -60,7 +63,7 @@ vim.keymap.set({ 'n', 'v' }, 'n', 'nzz', { silent = true })
 vim.keymap.set({ 'n', 'v' }, 'N', 'Nzz', { silent = true })
 
 -- paste without losing register
-vim.keymap.set({ 'n', 'v' }, 'p', '"0p', { silent = true })
+vim.keymap.set('v', 'p', '"0p', { silent = true })
 -- paste and copy
 vim.keymap.set({ 'n', 'v' }, '<leader>P', 'p', { silent = true })
 -- paste from clipboard

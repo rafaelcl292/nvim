@@ -20,7 +20,7 @@ vim.opt.signcolumn = 'yes'
 
 vim.opt.autowriteall = true
 
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 vim.opt.autoindent = true
 
