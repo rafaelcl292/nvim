@@ -91,4 +91,6 @@ require('pckr').add {
     'inkarkat/vim-CursorLineCurrentWindow',
 
     'stevearc/oil.nvim',
+
+    'mrjones2014/smart-splits.nvim',
 }
