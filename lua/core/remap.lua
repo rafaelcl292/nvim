@@ -14,7 +14,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>m', '<C-w>o', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>t', ':terminal<CR>', { silent = true })
 
 -- previous file
-vim.keymap.set({ 'n', 'v' }, '<leader><Tab>', 'C-^', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader><Tab>', '<C-^>', { silent = true })
 
 -- commentary
 vim.keymap.set('n', '<C-_>', ':Commentary<CR>', { silent = true })
