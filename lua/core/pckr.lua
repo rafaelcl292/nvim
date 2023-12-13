@@ -93,4 +93,10 @@ require('pckr').add {
     'stevearc/oil.nvim',
 
     'mrjones2014/smart-splits.nvim',
+
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
 }

@@ -3,7 +3,6 @@ require("oil").setup {
     skip_confirm_for_simple_edits = true,
     keymaps = {
         ['q'] = "actions.close",
-        ['<leader>q'] = "actions.close",
         ['g/'] = "actions.toggle_trash",
     },
     view_options = {
@@ -11,4 +10,4 @@ require("oil").setup {
     }
 }
 
-vim.keymap.set("n", "<leader>o", ":Oil<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>e", ":Oil<CR>", { noremap = true })
