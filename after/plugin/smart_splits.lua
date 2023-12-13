@@ -32,10 +32,10 @@ end, { silent = true })
 -- splits with resize
 
 -- resize
-vim.keymap.set({ 'n', 'v', 't' }, '<Left>', splits.resize_left)
-vim.keymap.set({ 'n', 'v', 't' }, '<Down>', splits.resize_down)
-vim.keymap.set({ 'n', 'v', 't' }, '<Up>', splits.resize_up)
-vim.keymap.set({ 'n', 'v', 't' }, '<Right>', splits.resize_right)
+vim.keymap.set({ 'n', 'v' }, '<Left>', splits.resize_left)
+vim.keymap.set({ 'n', 'v' }, '<Down>', splits.resize_down)
+vim.keymap.set({ 'n', 'v' }, '<Up>', splits.resize_up)
+vim.keymap.set({ 'n', 'v' }, '<Right>', splits.resize_right)
 vim.keymap.set({ 'n', 'v', 't' }, '<A-h>', splits.resize_left)
 vim.keymap.set({ 'n', 'v', 't' }, '<A-j>', splits.resize_down)
 vim.keymap.set({ 'n', 'v', 't' }, '<A-k>', splits.resize_up)
