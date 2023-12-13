@@ -16,18 +16,18 @@ end, { silent = true })
 
 
 -- splits
-vim.keymap.set({ 'n', 'v' }, '<leader>h', ':vnew<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>h', function()
+    vim.cmd('vnew')
+    splits.swap_buf_right()
+    vim.cmd('wincmd p')
+end, { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>j', function()
     vim.cmd('new')
     splits.swap_buf_down()
     vim.cmd('wincmd p')
 end, { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>k', ':new<CR>')
-vim.keymap.set({ 'n', 'v' }, '<leader>l', function()
-    vim.cmd('vnew')
-    splits.swap_buf_right()
-    vim.cmd('wincmd p')
-end, { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>l', ':vnew<CR>', { silent = true })
 
 -- splits with resize
 

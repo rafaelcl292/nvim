@@ -28,7 +28,8 @@ vim.opt.autoindent = true
 vim.opt.laststatus = 3
 -- vim.opt.cmdheight = 0
 
--- vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '80'
+vim.opt.splitright = true
 
 -- wsl clipboard
 vim.g.clipboard = {

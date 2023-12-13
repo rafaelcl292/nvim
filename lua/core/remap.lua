@@ -12,6 +12,14 @@ vim.keymap.set({ 'n', 'v' }, '<leader>m', '<C-w>o', { silent = true })
 
 -- terminal
 vim.keymap.set({ 'n', 'v' }, '<leader>t', ':terminal<CR>', { silent = true })
+-- terminal to the right
+vim.keymap.set({ 'n', 'v' }, '<leader>T', function()
+  vim.cmd('vnew')
+  vim.cmd('terminal')
+  -- resize according to the window size
+  -- 30% of the window
+  vim.cmd('vertical resize ' .. math.floor(vim.o.columns * 0.3))
+end, { silent = true })
 
 -- previous file
 vim.keymap.set({ 'n', 'v' }, '<leader><Tab>', '<C-^>', { silent = true })
