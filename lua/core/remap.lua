@@ -48,7 +48,10 @@ vim.keymap.set({ 'n', 'v' }, '<leader>a', 'ggVGzz', { silent = true })
 vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
-vim.keymap.set('n', '<leader>S', ':%s//<Left>', { silent = true })
+vim.keymap.set('n', '<leader>s', ':%s//g<Left><Left>')
+-- within visual selection
+vim.keymap.set('v', '<leader>s', ':s//g<Left><Left>')
+
 
 -- exit terminal with ESC
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
