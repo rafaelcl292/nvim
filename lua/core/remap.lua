@@ -2,7 +2,6 @@
 vim.keymap.set({ 'n', 'v' }, '<leader>q', ':q<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qa<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>!', ':qa!<CR>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>w', ':w<CR>', { silent = true })
 
 -- visual block
 vim.keymap.set({ 'n', 'v' }, '<leader>v', '<C-v>', { silent = true })
@@ -56,10 +55,14 @@ vim.keymap.set({ 'n', 'v' }, '<leader>a', 'ggVGzz', { silent = true })
 vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
 
 -- search and replace
-vim.keymap.set('n', '<leader>s', ':%s//g<Left><Left>')
+vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>')
 -- within visual selection
-vim.keymap.set('v', '<leader>s', ':s//g<Left><Left>')
+vim.keymap.set('v', '<leader>S', ':s//g<Left><Left>')
 
 
 -- exit terminal with ESC
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
+-- unmap Ctrl + F
+vim.keymap.set('n', '<C-f>', ':silent !tmux neww && fzf_session<CR>')
+

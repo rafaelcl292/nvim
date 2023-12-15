@@ -97,6 +97,15 @@ require('pckr').add {
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
-        requires = { { "nvim-lua/plenary.nvim" } }
-    }
+        requires = { { "nvim-lua/plenary.nvim" } },
+        config = function()
+            require("harpoon").setup({
+                settings = {
+                    save_on_toggle = true,
+                }
+            })
+        end
+    },
+
+    "Pocco81/auto-save.nvim",
 }
