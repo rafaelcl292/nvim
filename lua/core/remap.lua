@@ -62,7 +62,3 @@ vim.keymap.set('v', '<leader>S', ':s//g<Left><Left>')
 
 -- exit terminal with ESC
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
-
--- unmap Ctrl + F
-vim.keymap.set('n', '<C-f>', ':silent !tmux neww && fzf_session<CR>')
-
