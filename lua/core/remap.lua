@@ -13,11 +13,11 @@ vim.keymap.set({ 'n', 'v' }, '<leader>m', '<C-w>o', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>t', ':terminal<CR>', { silent = true })
 -- terminal to the right
 vim.keymap.set({ 'n', 'v' }, '<leader>T', function()
-  vim.cmd('vnew')
-  vim.cmd('terminal')
-  -- resize according to the window size
-  -- 30% of the window
-  vim.cmd('vertical resize ' .. math.floor(vim.o.columns * 0.3))
+    vim.cmd('vnew')
+    vim.cmd('terminal')
+    -- resize according to the window size
+    -- 30% of the window
+    vim.cmd('vertical resize ' .. math.floor(vim.o.columns * 0.3))
 end, { silent = true })
 
 -- previous file
@@ -62,3 +62,12 @@ vim.keymap.set('v', '<leader>S', ':s//g<Left><Left>')
 
 -- exit terminal with ESC
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
+-- fzf session
+vim.keymap.set('n', '<C-f>', function()
+    -- check if in tmux
+    if vim.fn.exists('$TMUX') then
+        vim.cmd('silent !tmux new-window -n fzf')
+        vim.cmd('silent !tmux send-keys -t fzf "fzf_session && exit" Enter')
+    end
+end, { silent = true })
