@@ -15,4 +15,4 @@ end
 vim.cmd 'au CmdlineLeave * lua Clear_command_line()'
 
 -- remove auto comment
-vim.cmd 'au BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o'
+vim.cmd 'au BufEnter * setlocal formatoptions-=cro'

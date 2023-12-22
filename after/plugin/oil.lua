@@ -3,7 +3,7 @@ require("oil").setup {
     skip_confirm_for_simple_edits = true,
     keymaps = {
         ['q'] = "actions.close",
-        -- ['g/'] = "actions.toggle_trash",
+        ['<leader>e'] = "actions.close"
     },
     view_options = {
         show_hidden = false,
