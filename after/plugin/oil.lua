@@ -6,7 +6,7 @@ require("oil").setup {
         -- ['g/'] = "actions.toggle_trash",
     },
     view_options = {
-        show_hidden = true,
+        show_hidden = false,
     }
 }
 

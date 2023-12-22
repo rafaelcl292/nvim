@@ -71,3 +71,6 @@ vim.keymap.set('n', '<C-f>', function()
         vim.cmd('silent !tmux send-keys -t fzf "fzf_session && exit" Enter')
     end
 end, { silent = true })
+
+-- remove undo message
+vim.keymap.set('n', 'u', 'u:echo<CR>')
