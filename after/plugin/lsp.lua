@@ -5,7 +5,8 @@ lsp.on_attach(function(_, bufnr)
     local bind = vim.keymap.set
     bind('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     bind('n', '<leader>s', function()
-        vim.lsp.buf.format { async = true }
+        vim.lsp.buf.format { async = false }
+        vim.cmd('normal zz')
     end, opts)
     bind('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
     bind('n', '<leader>i', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
@@ -48,7 +49,7 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-y>'] = cmp.mapping.confirm({
+        ['<A-i>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }),
