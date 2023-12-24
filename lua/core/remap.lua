@@ -74,3 +74,6 @@ end, { silent = true })
 
 -- remove undo message
 vim.keymap.set('n', 'u', 'u:echo<CR>')
+
+-- search without smartcase
+vim.keymap.set('n', '<leader>/', [[/\C]])

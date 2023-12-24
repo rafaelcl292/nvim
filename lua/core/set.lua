@@ -31,6 +31,8 @@ vim.opt.laststatus = 3
 vim.opt.colorcolumn = '80'
 vim.opt.splitright = true
 
+vim.opt.ignorecase = true
+
 -- wsl clipboard
 vim.g.clipboard = {
     name = 'WslClipboard',
