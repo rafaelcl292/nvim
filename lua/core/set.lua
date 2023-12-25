@@ -33,6 +33,8 @@ vim.opt.splitright = true
 
 vim.opt.ignorecase = true
 
+vim.opt.pumheight = 5
+
 -- wsl clipboard
 vim.g.clipboard = {
     name = 'WslClipboard',
