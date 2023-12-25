@@ -105,15 +105,14 @@ require('pckr').add {
     {
         "folke/noice.nvim",
         requires = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
         },
         config = function()
-            require("noice").setup {
-                -- your configuration comes here
-            }
+            require("noice").setup()
         end
     },
 
     'bluz71/nvim-linefly',
+
+
 }

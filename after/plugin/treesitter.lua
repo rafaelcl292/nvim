@@ -1,5 +1,9 @@
-require 'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
     ensure_installed = {
+        "vim",
+        "bash",
+        "markdown",
+        "markdown_inline",
         "c",
         "cpp",
         "css",
@@ -19,20 +23,10 @@ require 'nvim-treesitter.configs'.setup {
         "typescript",
         "yaml",
     },
-    -- -- Install parsers synchronously (only applied to `ensure_installed`)
+    -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
     auto_install = true,
     highlight = {
         enable = true,
-        disable = function(lang, _)
-            if lang == "bash" then
-                return true
-            end
-        end,
     },
-    -- rainbow = {
-    --     enable = true,
-    --     extended_mode = false,
-    --     max_file_lines = nil,
-    -- },
 }

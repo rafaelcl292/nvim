@@ -24,9 +24,7 @@ vim.opt.cursorline = true
 
 vim.opt.autoindent = true
 
--- vim.opt.winbar = "%=%m %f"
 vim.opt.laststatus = 3
--- vim.opt.cmdheight = 0
 
 vim.opt.colorcolumn = '80'
 vim.opt.splitright = true
