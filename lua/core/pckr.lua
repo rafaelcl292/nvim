@@ -101,4 +101,19 @@ require('pckr').add {
     },
 
     '0x00-ketsu/autosave.nvim',
+
+    {
+        "folke/noice.nvim",
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require("noice").setup {
+                -- your configuration comes here
+            }
+        end
+    },
+
+    'bluz71/nvim-linefly',
 }
