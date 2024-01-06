@@ -107,9 +107,6 @@ require('pckr').add {
         requires = {
             "MunifTanjim/nui.nvim",
         },
-        config = function()
-            require("noice").setup()
-        end
     },
 
     'bluz71/nvim-linefly',
