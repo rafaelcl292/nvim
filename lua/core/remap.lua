@@ -3,6 +3,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>q', ':q<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qa<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>!', ':qa!<CR>', { silent = true })
 
+-- write
+vim.keymap.set({ 'n', 'v' }, '<leader>w', ':w<CR>', { silent = true })
+
 -- visual block
 vim.keymap.set({ 'n', 'v' }, '<leader>v', '<C-v>', { silent = true })
 
