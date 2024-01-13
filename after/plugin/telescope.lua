@@ -1,5 +1,6 @@
+telescope = require('telescope')
 local actions = require('telescope.actions')
-require('telescope').setup {
+telescope.setup {
     defaults = {
         mappings = {
             i = {
@@ -11,6 +12,7 @@ require('telescope').setup {
     }
 }
 
+telescope.load_extension('fzf')
 local builtin = require('telescope.builtin')
 
 vim.keymap.set({ 'n', 'v' }, '<leader>fa', builtin.find_files)

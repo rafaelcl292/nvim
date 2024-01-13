@@ -1,17 +1,5 @@
 local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(_, bufnr)
-    local opts = { buffer = bufnr }
-    local bind = vim.keymap.set
-    bind('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    bind('n', '<leader>s', function()
-        vim.lsp.buf.format { async = false }
-        vim.cmd('normal zz')
-    end, opts)
-    bind('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    bind('n', '<leader>i', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-end)
-
 lsp.setup()
 
 lsp.use('lua_ls', {
@@ -25,21 +13,30 @@ lsp.use('lua_ls', {
 })
 
 -- Global mappings.
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set({ 'n', 'v' }, '<leader>d', vim.diagnostic.open_float)
+vim.keymap.set({ 'n', 'v' }, '[d', vim.diagnostic.goto_prev)
+vim.keymap.set({ 'n', 'v' }, ']d', vim.diagnostic.goto_next)
+vim.keymap.set({ 'n', 'v' }, '<F2>', vim.lsp.buf.rename)
+vim.keymap.set({ 'n', 'v' }, 'gd', vim.lsp.buf.definition)
+vim.keymap.set({ 'n', 'v' }, 'gD', vim.lsp.buf.declaration)
+vim.keymap.set({ 'n', 'v' }, '<leader>i', vim.lsp.buf.hover)
+vim.keymap.set({ 'n', 'v' }, '<leader>c', vim.lsp.buf.code_action)
+
+
 
 -- set up nvim-cmp
 local cmp = require('cmp')
+local ls = require('luasnip')
+require('luasnip/loaders/from_vscode').lazy_load()
+
+vim.keymap.set({ "i", "s" }, "<C-n>", function() ls.jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-p>", function() ls.jump(-1) end, { silent = true })
+
 
 cmp.setup({
     snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            ls.lsp_expand(args.body)
         end,
     },
     window = {
@@ -47,26 +44,23 @@ cmp.setup({
         -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<A-i>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        }),
+        ['<A-i>'] = cmp.mapping.confirm({ select = true }),
         ['<C-q>'] = cmp.mapping.close(),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<A-p>'] = cmp.mapping.select_prev_item(),
+        ['<A-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = function() end,
+        ['<C-n>'] = function() end,
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
         { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+        { name = 'nvim_lsp' },
+        { name = 'path' },
     }, {
         { name = 'buffer' },
     })
 })
 
--- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
         { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
@@ -75,7 +69,6 @@ cmp.setup.filetype('gitcommit', {
     })
 })
 
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
@@ -83,9 +76,21 @@ cmp.setup.cmdline({ '/', '?' }, {
     }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = cmp.mapping.preset.cmdline({
+        ['<C-n>'] = {
+            c = function(fallback) fallback() end
+        },
+        ['<C-p>'] = {
+            c = function(fallback) fallback() end
+        },
+        ['<C-h>'] = {
+            c = function() end
+        },
+        ['<C-j>'] = {
+            c = function() end
+        },
+    }),
     sources = cmp.config.sources({
         { name = 'path' }
     }, {

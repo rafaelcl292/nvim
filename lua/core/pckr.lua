@@ -17,6 +17,7 @@ require('pckr').add {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         requires = {
             'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             'nvim-tree/nvim-web-devicons',
         }
     },
@@ -41,35 +42,35 @@ require('pckr').add {
         branch = 'v2.x',
         requires = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {                            -- Optional
+            { 'neovim/nvim-lspconfig' },
+            {
                 'williamboman/mason.nvim',
                 run = function()
                     pcall(vim.cmd, 'MasonUpdate')
                 end,
             },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            'williamboman/mason-lspconfig.nvim',
+            'WhoIsSethDaniel/mason-tool-installer.nvim',
+
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            'hrsh7th/nvim-cmp',     -- Required
+            'hrsh7th/cmp-nvim-lsp', -- Required
+            'L3MON4D3/LuaSnip',     -- Required
+            'neovim/nvim-lspconfig',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'saadparwaiz1/cmp_luasnip',
+
+            -- Formatting
+            'stevearc/conform.nvim',
+
+            -- Linting
+            'mfussenegger/nvim-lint',
         }
     },
 
-    -- Autocompletion
-    {
-        'neovim/nvim-lspconfig',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/nvim-cmp',
-        'L3MON4D3/LuaSnip',
-        'saadparwaiz1/cmp_luasnip',
-    },
-
-    { 'jose-elias-alvarez/null-ls.nvim' },
 
     {
         'windwp/nvim-autopairs',
@@ -110,6 +111,4 @@ require('pckr').add {
     },
 
     'bluz71/nvim-linefly',
-
-
 }
