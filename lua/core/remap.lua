@@ -77,3 +77,6 @@ end, { silent = true })
 
 -- search without smartcase
 vim.keymap.set('n', '<leader>/', [[/\C]])
+
+-- center
+vim.keymap.set({ 'n', 'v' }, '<leader>z', 'zz', { silent = true })

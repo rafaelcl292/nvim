@@ -11,8 +11,6 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 0
-
 vim.opt.whichwrap = 'b,s,<,>,[,],h,l'
 vim.opt.wrap = false
 
