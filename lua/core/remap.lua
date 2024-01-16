@@ -62,10 +62,6 @@ vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>')
 -- within visual selection
 vim.keymap.set('v', '<leader>S', ':s//g<Left><Left>')
 
-
--- exit terminal with ESC
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
-
 -- fzf session
 vim.keymap.set('n', '<C-f>', function()
     -- check if in tmux

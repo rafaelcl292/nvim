@@ -118,4 +118,20 @@ require("pckr").add({
 		after = "nvim-treesitter",
 		requires = "nvim-treesitter/nvim-treesitter",
 	},
+
+	{
+		"kdheepak/lazygit.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+        config = function()
+            vim.keymap.set(
+                {"n", "v"},
+                "<leader>g",
+                ":LazyGit<CR>",
+                {silent = true}
+            )
+            vim.g.lazygit_floating_window_scaling_factor = 1
+        end,
+	},
 })
