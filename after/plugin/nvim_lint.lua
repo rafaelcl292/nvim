@@ -2,9 +2,8 @@ local lint = require('lint')
 
 lint.linters_by_ft = {
     go = { 'revive' },
-    python = { 'flake8' },
+    python = { 'rstcheck' },
     json = { 'jsonlint' },
-    yaml = { 'yamllint' },
     javascript = { 'eslint_d' },
 }
 

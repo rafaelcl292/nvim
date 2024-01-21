@@ -27,5 +27,7 @@ require('mason-tool-installer').setup {
         'goimports',
         'jsonlint',
         'yamllint',
+        'autopep8',
+        'rstcheck',
     },
 }
