@@ -11,8 +11,8 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.whichwrap = 'b,s,<,>,[,],h,l'
-vim.opt.wrap = false
+vim.opt.whichwrap = 'b,s,<,>,[,]'
+vim.opt.wrap = true
 
 vim.opt.signcolumn = 'yes'
 
@@ -33,6 +33,8 @@ vim.opt.pumheight = 5
 
 vim.opt.report = 100
 
+vim.opt.showcmdloc = 'statusline'
+
 -- wsl clipboard
 vim.g.clipboard = {
     name = 'WslClipboard',
@@ -44,7 +46,7 @@ vim.g.clipboard = {
         ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
         ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
-    cache_enabled = 0
+    cache_enabled = 0,
 }
 
 -- leader key

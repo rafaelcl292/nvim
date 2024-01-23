@@ -22,22 +22,27 @@ vim.keymap.set({ 'n', 'v' }, 'gD', vim.lsp.buf.declaration)
 vim.keymap.set({ 'n', 'v' }, '<leader>i', vim.lsp.buf.hover)
 vim.keymap.set({ 'n', 'v' }, '<leader>c', vim.lsp.buf.code_action)
 
-
-
 -- set up nvim-cmp
 local cmp = require('cmp')
 local ls = require('luasnip')
 require('luasnip/loaders/from_vscode').lazy_load()
 
-vim.keymap.set({ "i", "s" }, "<C-n>", function() ls.jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-p>", function() ls.jump(-1) end, { silent = true })
-
+vim.keymap.set(
+    { 'i', 's' },
+    '<C-n>',
+    function() ls.jump(1) end,
+    { silent = true }
+)
+vim.keymap.set(
+    { 'i', 's' },
+    '<C-p>',
+    function() ls.jump(-1) end,
+    { silent = true }
+)
 
 cmp.setup({
     snippet = {
-        expand = function(args)
-            ls.lsp_expand(args.body)
-        end,
+        expand = function(args) ls.lsp_expand(args.body) end,
     },
     window = {
         -- completion = cmp.config.window.bordered(),
@@ -58,7 +63,7 @@ cmp.setup({
         { name = 'path' },
     }, {
         { name = 'buffer' },
-    })
+    }),
 })
 
 cmp.setup.filetype('gitcommit', {
@@ -66,34 +71,34 @@ cmp.setup.filetype('gitcommit', {
         { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
     }, {
         { name = 'buffer' },
-    })
+    }),
 })
 
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = 'buffer' }
-    }
+        { name = 'buffer' },
+    },
 })
 
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline({
         ['<C-n>'] = {
-            c = function(fallback) fallback() end
+            c = function(fallback) fallback() end,
         },
         ['<C-p>'] = {
-            c = function(fallback) fallback() end
+            c = function(fallback) fallback() end,
         },
         ['<C-h>'] = {
-            c = function() end
+            c = function() end,
         },
         ['<C-j>'] = {
-            c = function() end
+            c = function() end,
         },
     }),
     sources = cmp.config.sources({
-        { name = 'path' }
+        { name = 'path' },
     }, {
-        { name = 'cmdline' }
-    })
+        { name = 'cmdline' },
+    }),
 })

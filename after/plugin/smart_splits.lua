@@ -1,19 +1,30 @@
 local splits = require('smart-splits')
 
 -- navigation
-vim.keymap.set({ 'n', 'v', 'i', 't' }, '<C-h>', function()
-    splits.move_cursor_left({ at_edge = 'stop' })
-end, { silent = true })
-vim.keymap.set({ 'n', 'v', 'i', 't' }, '<C-j>', function()
-    splits.move_cursor_down({ at_edge = 'stop' })
-end, { silent = true })
-vim.keymap.set({ 'n', 'v', 'i', 't' }, '<C-k>', function()
-    splits.move_cursor_up({ at_edge = 'stop' })
-end, { silent = true })
-vim.keymap.set({ 'n', 'v', 'i' }, '<C-l>', function()
-    splits.move_cursor_right({ at_edge = 'stop' })
-end, { silent = true })
-
+vim.keymap.set(
+    { 'n', 'v', 'i', 't' },
+    '<C-h>',
+    function() splits.move_cursor_left({ at_edge = 'stop' }) end,
+    { silent = true }
+)
+vim.keymap.set(
+    { 'n', 'v', 'i', 't' },
+    '<C-j>',
+    function() splits.move_cursor_down({ at_edge = 'stop' }) end,
+    { silent = true }
+)
+vim.keymap.set(
+    { 'n', 'v', 'i', 't' },
+    '<C-k>',
+    function() splits.move_cursor_up({ at_edge = 'stop' }) end,
+    { silent = true }
+)
+vim.keymap.set(
+    { 'n', 'v', 'i' },
+    '<C-l>',
+    function() splits.move_cursor_right({ at_edge = 'stop' }) end,
+    { silent = true }
+)
 
 -- splits
 vim.keymap.set({ 'n', 'v' }, '<leader>h', function()

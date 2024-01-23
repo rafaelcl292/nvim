@@ -1,36 +1,44 @@
-require("noice").setup({
+require('noice').setup({
+    messages = {
+        view_search = 'notify',
+    },
     commands = {
         history = {
-            view = "popup",
+            view = 'popup',
             opts = {
                 format = {
-                    "{date} ",
-                    "{event}",
-                    { "{kind}", before = { ".", hl_group = "NoiceFormatKind" } },
-                    " ",
-                    "{title} ",
-                    "{cmdline} ",
-                    "\n{message}\n",
+                    '{date} ',
+                    '{event}',
+                    {
+                        '{kind}',
+                        before = { '.', hl_group = 'NoiceFormatKind' },
+                    },
+                    ' ',
+                    '{title} ',
+                    '{cmdline} ',
+                    '\n{message}\n',
                 },
             },
         },
         last = {
-            view = "popup",
+            view = 'popup',
             opts = {
                 format = {
-                    "{date} ",
-                    "{event}",
-                    { "{kind}", before = { ".", hl_group = "NoiceFormatKind" } },
-                    " ",
-                    "{title} ",
-                    "{cmdline} ",
-                    "\n{message}",
+                    '{date} ',
+                    '{event}',
+                    {
+                        '{kind}',
+                        before = { '.', hl_group = 'NoiceFormatKind' },
+                    },
+                    ' ',
+                    '{title} ',
+                    '{cmdline} ',
+                    '\n{message}',
                 },
             },
-        }
+        },
     },
 })
-
 
 vim.keymap.set(
     { 'n', 'v' },

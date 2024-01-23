@@ -18,7 +18,7 @@ mason_lspconfig.setup({
     automatic_installation = true,
 })
 
-require('mason-tool-installer').setup {
+require('mason-tool-installer').setup({
     ensure_installed = {
         'bash-language-server',
         'lua-language-server',
@@ -30,4 +30,4 @@ require('mason-tool-installer').setup {
         'autopep8',
         'rstcheck',
     },
-}
+})
