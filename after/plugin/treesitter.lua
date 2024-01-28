@@ -34,24 +34,6 @@ require('nvim-treesitter.configs').setup({
     },
 
     textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ['af'] = '@function.outer',
-                ['if'] = '@function.inner',
-                ['aC'] = '@class.outer',
-                ['iC'] = '@class.inner',
-                ['al'] = '@loop.outer',
-                ['il'] = '@loop.inner',
-                ['ii'] = '@conditional.inner',
-                ['ai'] = '@conditional.outer',
-                ['aa'] = '@parameter.outer',
-                ['ia'] = '@parameter.inner',
-                ['ac'] = '@comment.outer',
-                ['ic'] = '@comment.outer',
-            },
-        },
         move = {
             enable = true,
             set_jumps = false,
@@ -62,6 +44,8 @@ require('nvim-treesitter.configs').setup({
                 [']i'] = '@conditional.outer',
                 [']a'] = '@parameter.outer',
                 [']c'] = '@comment.outer',
+                [']r'] = '@return.outer',
+                [']b'] = '@block.outer',
             },
             goto_next_end = {
                 [']M'] = '@function.outer',
@@ -70,6 +54,8 @@ require('nvim-treesitter.configs').setup({
                 [']I'] = '@conditional.outer',
                 [']A'] = '@parameter.outer',
                 [']C'] = '@comment.outer',
+                [']R'] = '@return.outer',
+                [']B'] = '@block.outer',
             },
             goto_previous_start = {
                 ['[m'] = '@function.outer',
@@ -78,6 +64,8 @@ require('nvim-treesitter.configs').setup({
                 ['[i'] = '@conditional.outer',
                 ['[a'] = '@parameter.outer',
                 ['[c'] = '@comment.outer',
+                ['[r'] = '@return.outer',
+                ['[b'] = '@block.outer',
             },
             goto_previous_end = {
                 ['[M'] = '@function.outer',
@@ -86,6 +74,8 @@ require('nvim-treesitter.configs').setup({
                 ['[I'] = '@conditional.outer',
                 ['[A'] = '@parameter.outer',
                 ['[C'] = '@comment.outer',
+                ['[R'] = '@return.outer',
+                ['[B'] = '@block.outer',
             },
         },
     },
