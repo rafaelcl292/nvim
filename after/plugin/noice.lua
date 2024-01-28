@@ -38,6 +38,14 @@ require('noice').setup({
             },
         },
     },
+    lsp = {
+        progress = {
+            enabled = false,
+        },
+        message = {
+            enabled = false,
+        },
+    },
 })
 
 vim.keymap.set(

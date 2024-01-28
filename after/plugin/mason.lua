@@ -4,7 +4,6 @@ local mason_lspconfig = require('mason-lspconfig')
 mason.setup()
 mason_lspconfig.setup({
     ensure_installed = {
-        'pyright',
         'rust_analyzer',
         'tsserver',
         'html',
@@ -20,14 +19,13 @@ mason_lspconfig.setup({
 
 require('mason-tool-installer').setup({
     ensure_installed = {
+        'python-lsp-server',
         'bash-language-server',
         'lua-language-server',
         'stylua',
-        'revive',
         'goimports',
-        'jsonlint',
-        'yamllint',
-        'autopep8',
-        'rstcheck',
+        'shfmt',
+        'black',
+        'isort',
     },
 })

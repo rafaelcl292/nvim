@@ -1,29 +1,14 @@
 local conform = require('conform')
-conform.setup({
-    formatters_by_ft = {
-        lua = { 'stylua' },
-        python = { 'autopep8' },
-        javascript = { 'prettier' },
-        typescript = { 'prettier' },
-        typescriptreact = { 'prettier' },
-        javascriptreact = { 'prettier' },
-        html = { 'prettier' },
-        css = { 'prettier' },
-        json = { 'prettier' },
-        yaml = { 'prettier' },
-        markdown = { 'prettier' },
-        rust = { 'rustfmt' },
-        go = { 'gofmt', 'goimports' },
-        sh = { 'shfmt' },
-    },
-})
+conform.setup()
 
-conform.formatters.prettier = {
-    prepend_args = { '--tab-width', '4' },
+conform.formatters_by_ft = {
+    lua = { 'stylua' },
+    go = { 'gofmt', 'goimports' },
+    sh = { 'shfmt' },
+    python = { 'black', 'isort' },
 }
 
 conform.formatters.stylua = {
-    command = 'stylua',
     prepend_args = {
         '--indent-type',
         'Spaces',
@@ -38,6 +23,10 @@ conform.formatters.stylua = {
 
 conform.formatters.shfmt = {
     prepend_args = { '-i', '4', '-ci' },
+}
+
+conform.formatters.black = {
+    prepend_args = { '--line-length', '80' },
 }
 
 vim.keymap.set(
