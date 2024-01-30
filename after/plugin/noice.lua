@@ -1,6 +1,10 @@
 require('noice').setup({
     messages = {
-        view_search = 'notify',
+        view = 'messages',
+        view_error = 'messages',
+        view_warning = 'messages',
+        view_history = 'messages',
+        view_search = false,
     },
     commands = {
         history = {
@@ -19,23 +23,16 @@ require('noice').setup({
                     '\n{message}\n',
                 },
             },
+            filter = {},
         },
         last = {
-            view = 'popup',
+            view = 'messages',
             opts = {
                 format = {
-                    '{date} ',
-                    '{event}',
-                    {
-                        '{kind}',
-                        before = { '.', hl_group = 'NoiceFormatKind' },
-                    },
-                    ' ',
-                    '{title} ',
-                    '{cmdline} ',
-                    '\n{message}',
+                    '{message}',
                 },
             },
+            filter = {},
         },
     },
     lsp = {

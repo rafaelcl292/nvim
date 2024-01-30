@@ -5,4 +5,5 @@ vim.g.linefly_options = {
     with_git_status = true,
     separator_symbol = '',
     with_macro_status = true,
+    with_search_count = true,
 }

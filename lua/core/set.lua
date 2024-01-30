@@ -6,7 +6,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
@@ -34,6 +34,7 @@ vim.opt.pumheight = 5
 vim.opt.report = 100
 
 vim.opt.showcmdloc = 'statusline'
+vim.opt.cmdheight = 0
 
 -- wsl clipboard
 vim.g.clipboard = {

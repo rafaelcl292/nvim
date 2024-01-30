@@ -66,7 +66,7 @@ vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>')
 vim.keymap.set('v', '<leader>S', ':s//g<Left><Left>')
 
 -- fzf session
-vim.keymap.set({ 'n', 'v', 'i' }, '<C-f>', function()
+vim.keymap.set({ 'n', 'v', 'i', 'c' }, '<C-f>', function()
     -- check if in tmux
     if vim.fn.exists('$TMUX') then
         vim.cmd('silent !tmux new-window -n fzf')
@@ -79,3 +79,6 @@ vim.keymap.set('n', '<leader>/', [[/\C]])
 
 -- center
 vim.keymap.set({ 'n', 'v' }, '<leader>z', 'zz', { silent = true })
+
+-- undo
+vim.keymap.set({ 'n', 'v' }, 'u', ':silent undo<CR>', { silent = true })

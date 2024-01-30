@@ -148,4 +148,6 @@ require('pckr').add({
     'nathanaelkane/vim-indent-guides',
 
     'echasnovski/mini.nvim',
+
+    'romainl/vim-cool',
 })
