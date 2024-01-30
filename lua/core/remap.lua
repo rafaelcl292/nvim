@@ -12,7 +12,6 @@ vim.keymap.set({ 'n', 'v' }, '<leader>v', '<C-v>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>m', '<C-w>o', { silent = true })
 
 -- terminal
--- vim.keymap.set({ 'n', 'v' }, '<leader>t', ':terminal<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>t', function()
     vim.cmd('new')
     vim.cmd('wincmd J')
@@ -34,18 +33,15 @@ vim.keymap.set('n', '<C-_>', ':Commentary<CR>', { silent = true })
 vim.keymap.set('v', '<C-_>', ":'<,'>Commentary<CR>", { silent = true })
 vim.keymap.set('i', '<C-_>', '<Esc>:Commentary<CR>', { silent = true })
 
--- move in visual mode
+-- move
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
--- move in normal mode
--- vim.keymap.set('n', 'J', ':m .+1<CR>==', { silent = true })
--- vim.keymap.set('n', 'K', ':m .-2<CR>==', { silent = true })
+vim.keymap.set('n', 'J', ':m .+1<CR>==', { silent = true })
+vim.keymap.set('n', 'K', ':m .-2<CR>==', { silent = true })
 
 -- cursor in middle
--- vim.keymap.set("v", "o", "ozz", { silent = true })
 vim.keymap.set({ 'n', 'v' }, 'G', 'Gzz', { silent = true })
--- vim.keymap.set({ "n", "v" }, "n", "nzz", { silent = true })
--- vim.keymap.set({ "n", "v" }, "N", "Nzz", { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>z', 'zz', { silent = true })
 
 -- paste without losing register
 vim.keymap.set('v', 'p', '"0p', { silent = true })
@@ -77,8 +73,12 @@ end, { silent = true })
 -- search without smartcase
 vim.keymap.set('n', '<leader>/', [[/\C]])
 
--- center
-vim.keymap.set({ 'n', 'v' }, '<leader>z', 'zz', { silent = true })
-
 -- undo
 vim.keymap.set({ 'n', 'v' }, 'u', ':silent undo<CR>', { silent = true })
+
+vim.keymap.set('n', ']<Space>', 'o<Esc>k', { silent = true })
+vim.keymap.set('n', '[<Space>', 'O<Esc>j', { silent = true })
+vim.keymap.set('n', ']y', 'yyp', { silent = true })
+vim.keymap.set('n', '[y', 'yyP', { silent = true })
+-- vim.keymap.set('v', 'd', [[:<C-u>silent'<,'>delete<CR>]], { silent = true })
+-- vim.keymap.set('v', 'D', [[:<C-u>silent'<,'>delete<CR>]], { silent = true })

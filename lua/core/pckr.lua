@@ -89,8 +89,6 @@ require('pckr').add({
 
     'tpope/vim-commentary',
 
-    'tpope/vim-unimpaired',
-
     'tpope/vim-surround',
 
     'lewis6991/gitsigns.nvim',

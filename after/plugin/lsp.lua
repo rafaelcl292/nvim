@@ -19,7 +19,7 @@ vim.keymap.set({ 'n', 'v' }, ']d', vim.diagnostic.goto_next)
 vim.keymap.set({ 'n', 'v' }, '<F2>', vim.lsp.buf.rename)
 vim.keymap.set({ 'n', 'v' }, 'gd', vim.lsp.buf.definition)
 vim.keymap.set({ 'n', 'v' }, 'gD', vim.lsp.buf.declaration)
-vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+vim.keymap.set({ 'n', 'v' }, '<Tab>', vim.lsp.buf.hover)
 vim.keymap.set({ 'n', 'v' }, '<leader>c', vim.lsp.buf.code_action)
 
 -- set up nvim-cmp
