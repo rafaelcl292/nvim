@@ -31,10 +31,7 @@ require('pckr').add({
             'olimorris/onedarkpro.nvim',
             'loctvl842/monokai-pro.nvim',
         },
-        config = function()
-            vim.cmd('colorscheme monokai-pro-default')
-            vim.cmd('hi Visual gui=reverse')
-        end,
+        config = function() vim.cmd('colorscheme monokai-pro-default') end,
     },
 
     {
@@ -82,7 +79,7 @@ require('pckr').add({
 
     {
         'windwp/nvim-autopairs',
-        config = function() require('nvim-autopairs').setup({}) end,
+        config = function() require('nvim-autopairs').setup() end,
     },
 
     'github/copilot.vim',
@@ -91,7 +88,10 @@ require('pckr').add({
 
     'tpope/vim-surround',
 
-    'lewis6991/gitsigns.nvim',
+    {
+        'lewis6991/gitsigns.nvim',
+        config = function() require('gitsigns').setup() end,
+    },
 
     'inkarkat/vim-CursorLineCurrentWindow',
 
@@ -102,19 +102,10 @@ require('pckr').add({
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
-        requires = { { 'nvim-lua/plenary.nvim' } },
+        requires = { 'nvim-lua/plenary.nvim' },
     },
 
     '0x00-ketsu/autosave.nvim',
-
-    {
-        'folke/noice.nvim',
-        requires = {
-            'MunifTanjim/nui.nvim',
-        },
-    },
-
-    'bluz71/nvim-linefly',
 
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
@@ -127,23 +118,12 @@ require('pckr').add({
         requires = {
             'nvim-lua/plenary.nvim',
         },
-        config = function()
-            vim.keymap.set(
-                { 'n', 'v' },
-                '<leader>g',
-                ':LazyGit<CR>',
-                { silent = true }
-            )
-            vim.g.lazygit_floating_window_scaling_factor = 1
-        end,
     },
 
     {
         'windwp/nvim-ts-autotag',
         requires = 'nvim-treesitter/nvim-treesitter',
     },
-
-    'nathanaelkane/vim-indent-guides',
 
     'echasnovski/mini.nvim',
 
