@@ -93,8 +93,6 @@ require('pckr').add({
         config = function() require('gitsigns').setup() end,
     },
 
-    'inkarkat/vim-CursorLineCurrentWindow',
-
     'stevearc/oil.nvim',
 
     'mrjones2014/smart-splits.nvim',

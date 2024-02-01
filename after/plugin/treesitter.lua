@@ -45,7 +45,6 @@ require('nvim-treesitter.configs').setup({
                 [']a'] = '@parameter.outer',
                 [']c'] = '@comment.outer',
                 [']r'] = '@return.outer',
-                [']b'] = '@block.outer',
             },
             goto_next_end = {
                 [']M'] = '@function.outer',
@@ -55,7 +54,6 @@ require('nvim-treesitter.configs').setup({
                 [']A'] = '@parameter.outer',
                 [']C'] = '@comment.outer',
                 [']R'] = '@return.outer',
-                [']B'] = '@block.outer',
             },
             goto_previous_start = {
                 ['[m'] = '@function.outer',
@@ -65,7 +63,6 @@ require('nvim-treesitter.configs').setup({
                 ['[a'] = '@parameter.outer',
                 ['[c'] = '@comment.outer',
                 ['[r'] = '@return.outer',
-                ['[b'] = '@block.outer',
             },
             goto_previous_end = {
                 ['[M'] = '@function.outer',
@@ -75,7 +72,6 @@ require('nvim-treesitter.configs').setup({
                 ['[A'] = '@parameter.outer',
                 ['[C'] = '@comment.outer',
                 ['[R'] = '@return.outer',
-                ['[B'] = '@block.outer',
             },
         },
     },

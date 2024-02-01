@@ -4,7 +4,6 @@ require('oil').setup({
     keymaps = {
         ['q'] = 'actions.close',
         ['<leader>e'] = 'actions.close',
-        ['<Esc>'] = 'actions.close',
         ['-'] = 'actions.parent',
         ['<CR>'] = 'actions.select',
         ['<C-p>'] = 'actions.preview',

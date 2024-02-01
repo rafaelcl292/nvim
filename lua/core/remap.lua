@@ -80,5 +80,11 @@ vim.keymap.set('n', ']<Space>', 'o<Esc>k', { silent = true })
 vim.keymap.set('n', '[<Space>', 'O<Esc>j', { silent = true })
 vim.keymap.set('n', ']y', 'yyp', { silent = true })
 vim.keymap.set('n', '[y', 'yyP', { silent = true })
--- vim.keymap.set('v', 'd', [[:<C-u>silent'<,'>delete<CR>]], { silent = true })
--- vim.keymap.set('v', 'D', [[:<C-u>silent'<,'>delete<CR>]], { silent = true })
+
+-- buffer
+vim.keymap.set({ 'n', 'v' }, ']b', ':bnext<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '[b', ':bprevious<CR>', { silent = true })
+
+-- quickfix
+vim.keymap.set({ 'n', 'v' }, ']q', ':cnext<CR>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '[q', ':cprev<CR>', { silent = true })
