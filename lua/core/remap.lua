@@ -1,90 +1,96 @@
+local function bind(key, cmd, mode, opts)
+    if opts == nil then
+        opts = { noremap = true, silent = true }
+    end
+    if mode == nil then
+        mode = { 'n', 'v' }
+    end
+    vim.keymap.set(mode, key, cmd, opts)
+end
+
 -- quit
-vim.keymap.set({ 'n', 'v' }, '<leader>q', ':q!<CR>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>Q', ':qa!<CR>', { silent = true })
+bind('<leader>q', ':q!<CR>')
+bind('<leader>Q', ':qa!<CR>')
 
 -- write
-vim.keymap.set({ 'n', 'v' }, '<leader>w', ':w<CR>', { silent = true })
+bind('<leader>w', ':w<CR>')
 
 -- visual block
-vim.keymap.set({ 'n', 'v' }, '<leader>v', '<C-v>', { silent = true })
+bind('<leader>v', '<C-v>')
 
 -- maximize
-vim.keymap.set({ 'n', 'v' }, '<leader>m', '<C-w>o', { silent = true })
+bind('<leader>m', '<C-w>o')
 
 -- terminal
-vim.keymap.set({ 'n', 'v' }, '<leader>t', function()
+bind('<leader>t', function()
     vim.cmd('new')
     vim.cmd('wincmd J')
     vim.cmd('horizontal resize ' .. math.floor(vim.o.lines * 0.33))
     vim.cmd('terminal ')
-end, { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>T', function()
+end)
+bind('<leader>T', function()
     vim.cmd('vnew')
     vim.cmd('terminal')
     vim.cmd('vertical resize ' .. math.floor(vim.o.columns * 0.33))
-end, { silent = true })
-vim.keymap.set('t', [[<C-\>]], [[<C-\><C-n>]], { silent = true })
+end)
+bind([[<C-\>]], [[<C-\><C-n>]], 't')
 
 -- previous file
-vim.keymap.set({ 'n', 'v' }, '<leader><Tab>', '<C-^>', { silent = true })
+bind('<leader><Tab>', '<C-^>')
 
 -- commentary
-vim.keymap.set('n', '<C-_>', ':Commentary<CR>', { silent = true })
-vim.keymap.set('v', '<C-_>', ":'<,'>Commentary<CR>", { silent = true })
-vim.keymap.set('i', '<C-_>', '<Esc>:Commentary<CR>', { silent = true })
+bind('<C-_>', ':Commentary<CR>')
+bind('<C-_>', ":'<,'>Commentary<CR>", 'v')
+bind('<C-_>', '<Esc>:Commentary<CR>', 'i')
 
 -- move
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
-vim.keymap.set('n', 'J', ':m .+1<CR>==', { silent = true })
-vim.keymap.set('n', 'K', ':m .-2<CR>==', { silent = true })
+bind('J', ":m '>+1<CR>gv=gv", 'v')
+bind('K', ":m '<-2<CR>gv=gv", 'v')
+bind('J', ':m .+1<CR>==', 'n')
+bind('K', ':m .-2<CR>==', 'n')
 
 -- cursor in middle
-vim.keymap.set({ 'n', 'v' }, 'G', 'Gzz', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>z', 'zz', { silent = true })
+bind('G', 'Gzz')
+bind('<leader>z', 'zz')
 
 -- paste without losing register
-vim.keymap.set('v', 'p', '"0p', { silent = true })
--- paste and copy
-vim.keymap.set({ 'n', 'v' }, '<leader>P', 'p', { silent = true })
--- paste from clipboard
-vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { silent = true })
--- yank to clipboard
-vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { silent = true })
+bind('p', '"0p', 'v')
+bind('P', '"0P', 'v')
+bind('<leader>p', 'p', 'v')
+bind('<leader>P', 'P', 'v')
+-- clipboard paste and yank
+bind('<leader>p', '"+p')
+bind('<leader>P', '"+P')
+bind('<leader>y', '"+y')
 
 -- select all
-vim.keymap.set({ 'n', 'v' }, '<leader>a', 'ggVGzz', { silent = true })
-vim.keymap.set('i', '<C-a>', '<Esc>ggVGzz', { silent = true })
+bind('<C-a>', '<Esc>ggVGzz', 'i')
 
 -- search and replace
-vim.keymap.set('n', '<leader>S', ':%s//g<Left><Left>')
--- within visual selection
-vim.keymap.set('v', '<leader>S', ':s//g<Left><Left>')
+bind('<leader>S', ':%s//g<Left><Left>', 'n')
+bind('<leader>S', ":'<,'>s//g<Left><Left>", 'v')
 
 -- fzf session
-vim.keymap.set({ 'n', 'v', 'i', 'c' }, '<C-f>', function()
+bind('<C-f>', function()
     -- check if in tmux
     if vim.fn.exists('$TMUX') then
         vim.cmd('silent !tmux new-window -n fzf')
         vim.cmd('silent !tmux send-keys -t fzf "fzf_session && exit" Enter')
     end
-end, { silent = true })
+end)
 
 -- search without smartcase
-vim.keymap.set('n', '<leader>/', [[/\C]])
+bind('<leader>/', [[/\C]], 'n', { noremap = true })
 
 -- undo
-vim.keymap.set({ 'n', 'v' }, 'u', ':silent undo<CR>', { silent = true })
+bind('u', ':silent undo<CR>')
 
-vim.keymap.set('n', ']<Space>', 'o<Esc>k', { silent = true })
-vim.keymap.set('n', '[<Space>', 'O<Esc>j', { silent = true })
-vim.keymap.set('n', ']y', 'yyp', { silent = true })
-vim.keymap.set('n', '[y', 'yyP', { silent = true })
-
--- buffer
-vim.keymap.set({ 'n', 'v' }, ']b', ':bnext<CR>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '[b', ':bprevious<CR>', { silent = true })
-
--- quickfix
-vim.keymap.set({ 'n', 'v' }, ']q', ':cnext<CR>', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '[q', ':cprev<CR>', { silent = true })
+-- brackets
+bind(']<Space>', 'o<Esc>k', 'n')
+bind('[<Space>', 'O<Esc>j', 'n')
+bind(']y', 'yyp', 'n')
+bind('[y', 'yyP', 'n')
+bind(']b', ':bnext<CR>')
+bind('[b', ':bprevious<CR>')
+bind(']t', ':tabnext<CR>')
+bind('[t', ':tabprevious<CR>')
