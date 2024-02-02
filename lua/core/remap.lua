@@ -9,14 +9,14 @@ local function bind(key, cmd, mode, opts)
 end
 
 -- quit
-bind('<leader>q', ':q!<CR>')
-bind('<leader>Q', ':qa!<CR>')
+bind('<C-w>Q', ':qa!<CR>')
 
 -- write
 bind('<leader>w', ':w<CR>')
 
 -- visual block
 bind('<leader>v', '<C-v>')
+bind('<C-q>', '')
 
 -- maximize
 bind('<leader>m', '<C-w>o')
@@ -25,7 +25,7 @@ bind('<leader>m', '<C-w>o')
 bind('<leader>t', function()
     vim.cmd('new')
     vim.cmd('wincmd J')
-    vim.cmd('horizontal resize ' .. math.floor(vim.o.lines * 0.33))
+    vim.cmd('horizontal resize ' .. math.floor(vim.o.lines * 0.30))
     vim.cmd('terminal ')
 end)
 bind('<leader>T', function()
@@ -33,7 +33,8 @@ bind('<leader>T', function()
     vim.cmd('terminal')
     vim.cmd('vertical resize ' .. math.floor(vim.o.columns * 0.33))
 end)
-bind([[<C-\>]], [[<C-\><C-n>]], 't')
+bind('<C-q>', [[<C-\><C-n>]], 't')
+bind('<C-d>', [[<C-\><C-n>:bd!<CR>]], 't')
 
 -- previous file
 bind('<leader><Tab>', '<C-^>')

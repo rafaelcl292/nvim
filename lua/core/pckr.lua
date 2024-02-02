@@ -29,9 +29,15 @@ require('pckr').add({
             'catppuccin/nvim',
             'folke/tokyonight.nvim',
             'olimorris/onedarkpro.nvim',
-            'loctvl842/monokai-pro.nvim',
+            {
+                'loctvl842/monokai-pro.nvim',
+                requires = 'nvim-tree/nvim-web-devicons',
+            }
         },
-        config = function() vim.cmd('colorscheme monokai-pro-default') end,
+        config = function()
+            require("monokai-pro").setup()
+            vim.cmd('colorscheme monokai-pro-default')
+        end,
     },
 
     {
