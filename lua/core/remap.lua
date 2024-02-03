@@ -70,8 +70,8 @@ bind('<leader>y', '"+y')
 bind('<C-a>', '<Esc>ggVGzz', 'i')
 
 -- search and replace
-bind('<leader>S', ':%s//g<Left><Left>', 'n')
-bind('<leader>S', ":'<,'>s//g<Left><Left>", 'v')
+bind('<leader>S', ':%s//g<Left><Left>', 'n', { noremap = true })
+bind('<leader>S', ":'<,'>s//g<Left><Left>", 'v', { noremap = true })
 
 -- fzf session
 bind('<C-f>', function()

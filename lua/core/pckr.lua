@@ -26,8 +26,8 @@ require('pckr').add({
     {
         'rebelot/kanagawa.nvim',
         requires = {
-            'catppuccin/nvim',
-            'folke/tokyonight.nvim',
+            -- 'catppuccin/nvim',
+            -- 'folke/tokyonight.nvim',
             'olimorris/onedarkpro.nvim',
             {
                 'loctvl842/monokai-pro.nvim',

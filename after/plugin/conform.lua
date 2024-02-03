@@ -15,7 +15,7 @@ conform.formatters.stylua = {
         '--quote-style',
         'AutoPreferSingle',
         '--column-width',
-        '80',
+        '79',
         '--collapse-simple-statement',
         'Never',
     },
@@ -26,7 +26,7 @@ conform.formatters.shfmt = {
 }
 
 conform.formatters.black = {
-    prepend_args = { '--line-length', '80' },
+    prepend_args = { '--line-length', '79' },
 }
 
 vim.keymap.set({ 'v', 'n' }, '<leader>s', function()
