@@ -9,6 +9,8 @@ local function bind(key, cmd, mode, opts)
 end
 
 -- quit
+bind('<C-w><C-q>', ':q!<CR>')
+bind('<C-w>q', ':q!<CR>')
 bind('<C-w>Q', ':qa!<CR>')
 
 -- write
