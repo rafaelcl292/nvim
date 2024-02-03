@@ -32,6 +32,8 @@ vim.opt.ignorecase = true
 
 vim.opt.pumheight = 5
 
+vim.opt.timeout = false
+
 vim.opt.report = 100
 
 -- wsl clipboard
@@ -47,6 +49,8 @@ vim.g.clipboard = {
     },
     cache_enabled = 0,
 }
+
+vim.g.zig_fmt_autosave = 0
 
 -- leader key
 vim.g.mapleader = ' '

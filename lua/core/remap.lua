@@ -9,9 +9,9 @@ local function bind(key, cmd, mode, opts)
 end
 
 -- quit
-bind('<C-w><C-q>', ':q!<CR>')
-bind('<C-w>q', ':q!<CR>')
-bind('<C-w>Q', ':qa!<CR>')
+bind('\x17<C-q>', ':q!<CR>')
+bind('\x17q', ':q!<CR>')
+bind('\x17Q', ':qa!<CR>')
 
 -- write
 bind('<leader>w', ':w<CR>')
