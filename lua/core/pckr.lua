@@ -132,4 +132,9 @@ require('pckr').add({
     'echasnovski/mini.nvim',
 
     'romainl/vim-cool',
+
+    {
+        'Aasim-A/scrollEOF.nvim',
+        config = function() require('scrollEOF').setup() end,
+    }
 })

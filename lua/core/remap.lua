@@ -53,7 +53,6 @@ bind('J', ':m .+1<CR>==', 'n')
 bind('K', ':m .-2<CR>==', 'n')
 
 -- cursor in middle
-bind('G', 'Gzz')
 bind('<leader>z', 'zz')
 
 -- paste without losing register
