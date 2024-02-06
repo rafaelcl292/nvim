@@ -89,6 +89,55 @@ bind('<leader>/', [[/\C]], 'n', { noremap = true })
 bind('u', ':silent undo<CR>')
 
 -- brackets
+local get_files = function(dir)
+    local entries = vim.fn.split(vim.fn.glob(dir .. '/*'), '\n')
+    local files = {}
+    for _, entry in pairs(entries) do
+        if vim.fn.isdirectory(entry) ~= 1 then
+            table.insert(files, vim.fn.fnamemodify(entry, ':t'))
+        end
+    end
+    if vim.tbl_isempty(files) then return else return files end
+end
+
+local file_by_offset = function(offset)
+    local dir = vim.fn.expand('%:p:h')
+    local files = get_files(dir)
+    if not files then return end
+    local current = vim.fn.expand('%:t')
+    if current == '' then
+        if offset < 0 then
+            return dir .. '/' .. files[1]
+        else
+            return dir .. '/' .. files[#files]
+        end
+    else
+        local index = vim.fn.index(files, current) + 1
+        if index == 0 then return end
+        index = index + offset
+        if index < 1 then
+            index = 1
+        elseif index > #files then
+            index = #files
+        end
+        return dir .. '/' .. files[index]
+    end
+end
+
+local function file_next()
+    local file = file_by_offset(vim.v.count1)
+    if file then
+        vim.cmd('edit ' .. file)
+    end
+end
+
+local function file_previous()
+    local file = file_by_offset(-vim.v.count1)
+    if file then
+        vim.cmd('edit ' .. file)
+    end
+end
+
 bind(']<Space>', 'o<Esc>k', 'n')
 bind('[<Space>', 'O<Esc>j', 'n')
 bind(']y', 'yyp', 'n')
@@ -97,3 +146,5 @@ bind(']b', ':bnext<CR>')
 bind('[b', ':bprevious<CR>')
 bind(']t', ':tabnext<CR>')
 bind('[t', ':tabprevious<CR>')
+bind(']f', file_next)
+bind('[f', file_previous)
