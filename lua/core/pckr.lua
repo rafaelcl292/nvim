@@ -92,8 +92,6 @@ require('pckr').add({
 
     'tpope/vim-commentary',
 
-    'tpope/vim-surround',
-
     {
         'lewis6991/gitsigns.nvim',
         config = function() require('gitsigns').setup() end,

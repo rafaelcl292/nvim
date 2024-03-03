@@ -35,3 +35,26 @@ require('mini.ai').setup({
         }),
     },
 })
+
+require('mini.surround').setup({
+    custom_surroundings = nil,
+
+    n_lines = 1,
+
+    search_method = 'cover_or_nearest',
+
+    silent = true,
+
+    mappings = {
+        add = 'gs',
+        delete = 'ds',
+        replace = 'cs',
+
+        find = '',
+        find_left = '',
+        highlight = '',
+        update_n_lines = '',
+        suffix_last = '',
+        suffix_next = '',
+    },
+})
