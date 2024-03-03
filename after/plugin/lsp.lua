@@ -3,8 +3,12 @@ local lsp = require('lsp-zero').preset()
 lsp.use('lua_ls', {
     settings = {
         Lua = {
-            diagnostics = {
-                globals = { 'vim' },
+            runtime = { version = 'LuaJIT' },
+            workspace = {
+                library = {
+                    '$(3rd)/luv/library',
+                    unpack(vim.api.nvim_get_runtime_file('', true)),
+                },
             },
         },
     },
@@ -21,7 +25,7 @@ lsp.on_attach(function(_, bufnr)
     bind(']d', vim.diagnostic.goto_next)
     bind('<F2>', vim.lsp.buf.rename)
     bind('gd', vim.lsp.buf.definition)
-    vim.keymap.set('n', '<S-Tab>', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<Backspace>', vim.lsp.buf.hover, opts)
     bind('<leader>c', vim.lsp.buf.code_action)
     bind('<leader>I', vim.lsp.buf.references)
 end)
