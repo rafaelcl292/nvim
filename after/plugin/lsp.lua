@@ -1,33 +1,49 @@
 local lsp = require('lsp-zero').preset()
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
 lsp.use('lua_ls', {
+    capabilities = capabilities,
     settings = {
         Lua = {
+            checkThirdParty = false,
             runtime = { version = 'LuaJIT' },
             workspace = {
-                library = {
-                    '$(3rd)/luv/library',
-                    unpack(vim.api.nvim_get_runtime_file('', true)),
-                },
+                -- library = {
+                --     '$(3rd)/luv/library',
+                --     unpack(vim.api.nvim_get_runtime_file('', true)),
+                -- },
+                library = { vim.env.VIMRUNTIME },
+            },
+            completion = {
+                callSnippet = 'Replace',
             },
         },
     },
 })
 
+lsp.use('clangd', {
+    capabilities = capabilities,
+    cmd = {
+        'clangd',
+        '--offset-encoding=utf-16',
+        '--fallback-style=webkit',
+    },
+})
+
 lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr, remap = true }
-    local function bind(key, cmd)
-        vim.keymap.set({ 'n', 'v' }, key, cmd, opts)
-    end
+    local function bind(key, cmd) vim.keymap.set({ 'n', 'v' }, key, cmd, opts) end
 
     bind('<leader>d', vim.diagnostic.open_float)
     bind('[d', vim.diagnostic.goto_prev)
     bind(']d', vim.diagnostic.goto_next)
     bind('<F2>', vim.lsp.buf.rename)
     bind('gd', vim.lsp.buf.definition)
-    vim.keymap.set('n', '<Backspace>', vim.lsp.buf.hover, opts)
+    bind('gi', vim.lsp.buf.implementation)
+    bind('gr', vim.lsp.buf.references)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     bind('<leader>c', vim.lsp.buf.code_action)
-    bind('<leader>I', vim.lsp.buf.references)
 end)
 
 lsp.setup()
@@ -35,40 +51,32 @@ lsp.setup()
 -- set up nvim-cmp
 local cmp = require('cmp')
 local ls = require('luasnip')
-require('luasnip/loaders/from_vscode').lazy_load()
+ls.config.setup()
 
-vim.keymap.set({ 'i', 's' }, '<C-n>', function()
-    ls.jump(1)
-end, { silent = true })
-vim.keymap.set({ 'i', 's' }, '<C-p>', function()
-    ls.jump(-1)
-end, { silent = true })
+require('luasnip/loaders/from_vscode').lazy_load()
 
 cmp.setup({
     snippet = {
-        expand = function(args)
-            ls.lsp_expand(args.body)
-        end,
+        expand = function(args) ls.lsp_expand(args.body) end,
     },
+    preselect = cmp.PreselectMode.None,
     mapping = cmp.mapping.preset.insert({
         ['<A-i>'] = cmp.mapping.confirm({ select = true }),
         ['<C-q>'] = cmp.mapping.close(),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<A-p>'] = cmp.mapping.select_prev_item(),
         ['<A-n>'] = cmp.mapping.select_next_item(),
+        ['<C-l>'] = cmp.mapping(function()
+            if ls.expand_or_locally_jumpable() then ls.expand_or_jump() end
+        end, { 'i', 's' }),
+        ['<C-h>'] = cmp.mapping(function()
+            if ls.locally_jumpable(-1) then ls.jump(-1) end
+        end, { 'i', 's' }),
     }),
     sources = cmp.config.sources({
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'luasnip' },
         { name = 'nvim_lsp' },
         { name = 'path' },
-    }, {
-        { name = 'buffer' },
-    }),
-})
-
-cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        { name = 'git' },
     }, {
         { name = 'buffer' },
     }),

@@ -2,10 +2,12 @@ local conform = require('conform')
 conform.setup()
 
 conform.formatters_by_ft = {
-    -- lua = { 'stylua' },
+    lua = { 'stylua' },
     go = { 'gofmt', 'goimports' },
     sh = { 'shfmt' },
     python = { 'black', 'isort' },
+    ocaml = { 'ocamlformat' },
+    javascript = { 'prettier' },
 }
 
 conform.formatters.stylua = {
@@ -17,7 +19,7 @@ conform.formatters.stylua = {
         '--column-width',
         '79',
         '--collapse-simple-statement',
-        'Never',
+        'Always',
     },
 }
 

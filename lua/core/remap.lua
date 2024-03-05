@@ -1,10 +1,6 @@
 local function bind(key, cmd, mode, opts)
-    if opts == nil then
-        opts = { noremap = true, silent = true }
-    end
-    if mode == nil then
-        mode = { 'n', 'v' }
-    end
+    if opts == nil then opts = { noremap = true, silent = true } end
+    if mode == nil then mode = { 'n', 'v' } end
     vim.keymap.set(mode, key, cmd, opts)
 end
 
@@ -38,6 +34,9 @@ end)
 bind('<C-q>', [[<C-\><C-n>]], 't')
 bind('<C-d>', [[<C-\><C-n>:bd!<CR>]], 't')
 
+-- command mode
+bind('<C-a>', '<Home>', 'c', { noremap = true })
+
 -- previous file
 bind('<leader><Tab>', '<C-^>')
 
@@ -49,21 +48,21 @@ bind('<C-_>', '<Esc>:Commentary<CR>', 'i')
 -- move
 bind('J', ":m '>+1<CR>gv=gv", 'v')
 bind('K', ":m '<-2<CR>gv=gv", 'v')
-bind('J', ':m .+1<CR>==', 'n')
-bind('K', ':m .-2<CR>==', 'n')
+-- bind('J', ':m .+1<CR>==', 'n')
+-- bind('K', ':m .-2<CR>==', 'n')
 
 -- cursor in middle
 bind('<leader>z', 'zz')
+bind('<C-u>', '<C-u>zz')
+bind('<C-d>', '<C-d>zz')
+bind('n', 'nzz')
+bind('N', 'Nzz')
 
--- paste without losing register
-bind('p', '"0p', 'v')
-bind('P', '"0P', 'v')
-bind('<leader>p', 'p', 'v')
-bind('<leader>P', 'P', 'v')
 -- clipboard paste and yank
 bind('<leader>p', '"+p')
 bind('<leader>P', '"+P')
 bind('<leader>y', '"+y')
+bind('<leader>Y', '"+y$')
 
 -- select all
 bind('<C-a>', '<Esc>ggVGzz', 'i')
@@ -87,6 +86,9 @@ bind('<leader>/', [[/\C]], 'n', { noremap = true })
 -- undo
 bind('u', ':silent undo<CR>')
 
+bind('<', '<gv', 'v')
+bind('>', '>gv', 'v')
+
 -- brackets
 local get_files = function(dir)
     local entries = vim.fn.split(vim.fn.glob(dir .. '/*'), '\n')
@@ -96,7 +98,11 @@ local get_files = function(dir)
             table.insert(files, vim.fn.fnamemodify(entry, ':t'))
         end
     end
-    if vim.tbl_isempty(files) then return else return files end
+    if vim.tbl_isempty(files) then
+        return
+    else
+        return files
+    end
 end
 
 local file_by_offset = function(offset)
@@ -125,16 +131,12 @@ end
 
 local function file_next()
     local file = file_by_offset(vim.v.count1)
-    if file then
-        vim.cmd('edit ' .. file)
-    end
+    if file then vim.cmd('edit ' .. file) end
 end
 
 local function file_previous()
     local file = file_by_offset(-vim.v.count1)
-    if file then
-        vim.cmd('edit ' .. file)
-    end
+    if file then vim.cmd('edit ' .. file) end
 end
 
 bind(']<Space>', 'o<Esc>k', 'n')

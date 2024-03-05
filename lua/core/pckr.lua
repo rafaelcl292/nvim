@@ -32,11 +32,12 @@ require('pckr').add({
             {
                 'loctvl842/monokai-pro.nvim',
                 requires = 'nvim-tree/nvim-web-devicons',
-            }
+            },
         },
         config = function()
-            require("monokai-pro").setup()
+            require('monokai-pro').setup()
             vim.cmd('colorscheme monokai-pro-default')
+            vim.cmd('hi Visual guibg=#5E4C5A')
         end,
     },
 
@@ -54,7 +55,7 @@ require('pckr').add({
             { 'neovim/nvim-lspconfig' },
             {
                 'williamboman/mason.nvim',
-                run = function() pcall(vim.cmd, 'MasonUpdate') end,
+                run = ':MasonUpdate',
             },
             {
                 'williamboman/mason-lspconfig.nvim',
@@ -68,7 +69,11 @@ require('pckr').add({
             -- Autocompletion
             'hrsh7th/nvim-cmp',
             'hrsh7th/cmp-nvim-lsp',
-            'L3MON4D3/LuaSnip',
+            {
+                'L3MON4D3/LuaSnip',
+                run = 'make install_jsregexp',
+                requires = 'rafamadriz/friendly-snippets',
+            },
             'neovim/nvim-lspconfig',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
@@ -134,5 +139,7 @@ require('pckr').add({
     {
         'Aasim-A/scrollEOF.nvim',
         config = function() require('scrollEOF').setup() end,
-    }
+    },
+
+    'RRethy/vim-illuminate',
 })

@@ -7,6 +7,13 @@ telescope.setup({
                 ['<esc>'] = actions.close,
                 ['<C-j>'] = actions.move_selection_next,
                 ['<C-k>'] = actions.move_selection_previous,
+                ['<C-u>'] = function()
+                    vim.api.nvim_feedkeys(
+                        vim.api.nvim_replace_termcodes(
+                            '<C-u>', true, true, true
+                        ), 'n', true
+                    )
+                end,
             },
         },
     },
@@ -25,6 +32,7 @@ map({ 'n', 'v' }, '<leader>fb', builtin.buffers)
 map({ 'n', 'v' }, '<leader>fc', builtin.commands)
 map({ 'n', 'v' }, '<leader>fk', builtin.keymaps)
 map({ 'n', 'v' }, '<leader>fD', builtin.diagnostics)
+map({ 'n', 'v' }, '<leader>f;', builtin.command_history)
 map({ 'n', 'v' }, '<leader>fd', function()
     require('telescope.pickers')
         .new({}, {
@@ -38,7 +46,7 @@ map({ 'n', 'v' }, '<leader>fd', function()
         :find()
     vim.api.nvim_feedkeys('./', 'n', true)
 end, { desc = 'Find Directory' })
-map('n', '<leader>f/', function()
+map({ 'n', 'v' }, '<leader>f.', function()
     builtin.current_buffer_fuzzy_find(
         require('telescope.themes').get_dropdown({
             previewer = false,

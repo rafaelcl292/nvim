@@ -8,6 +8,8 @@ require('oil').setup({
         ['<CR>'] = 'actions.select',
         ['<C-p>'] = 'actions.preview',
         ['gh'] = 'actions.toggle_hidden',
+        ['J'] = 'actions.preview_scroll_down',
+        ['K'] = 'actions.preview_scroll_up',
     },
     use_default_keymaps = false,
     view_options = {
