@@ -40,11 +40,6 @@ bind('<C-a>', '<Home>', 'c', { noremap = true })
 -- previous file
 bind('<leader><Tab>', '<C-^>')
 
--- commentary
-bind('<C-_>', ':Commentary<CR>')
-bind('<C-_>', ":'<,'>Commentary<CR>", 'v')
-bind('<C-_>', '<Esc>:Commentary<CR>', 'i')
-
 -- move
 bind('J', ":m '>+1<CR>gv=gv", 'v')
 bind('K', ":m '<-2<CR>gv=gv", 'v')

@@ -95,7 +95,22 @@ require('pckr').add({
 
     'github/copilot.vim',
 
-    'tpope/vim-commentary',
+    {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup({
+                toggler = {
+                    line = '<C-_>',
+                    block = '<leader><C-_>',
+                },
+                opleader = {
+                    line = '<C-_>',
+                    block = '<leader><C-_>',
+                },
+                ignore = '^$',
+            })
+        end,
+    },
 
     {
         'lewis6991/gitsigns.nvim',
