@@ -80,3 +80,13 @@ require('nvim-treesitter.configs').setup({
         },
     },
 })
+
+require('nvim-treesitter.parsers').get_parser_configs().ebnf = {
+    install_info = {
+        url = 'https://github.com/RubixDev/ebnf.git',
+        files = { 'src/parser.c' },
+        location = 'crates/tree-sitter-ebnf',
+        branch = 'main',
+    },
+}
+vim.filetype.add({ extension = { ebnf = 'ebnf' } })
