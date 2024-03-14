@@ -8,6 +8,7 @@ conform.formatters_by_ft = {
     python = { 'black', 'isort' },
     ocaml = { 'ocamlformat' },
     javascript = { 'prettier' },
+    xml = { 'xmlformat' },
 }
 
 conform.formatters.stylua = {
