@@ -41,10 +41,10 @@ bind('<C-a>', '<Home>', 'c', { noremap = true })
 bind('<leader><Tab>', '<C-^>')
 
 -- move
-bind('J', ":m '>+1<CR>gv=gv", 'v')
-bind('K', ":m '<-2<CR>gv=gv", 'v')
--- bind('J', ':m .+1<CR>==', 'n')
--- bind('K', ':m .-2<CR>==', 'n')
+bind('J', [[:<c-u>silent! '<,'> m '>+1<CR>gv=gv]], 'v')
+bind('K', [[:<c-u>silent! '<,'> m '<-2<CR>gv=gv]], 'v')
+bind('J', [[:silent!m .+1<CR>==]], 'n')
+bind('K', [[:silent!m .-2<CR>==]], 'n')
 
 -- cursor in middle
 bind('<leader>z', 'zz')
