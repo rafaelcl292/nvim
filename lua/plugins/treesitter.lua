@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup({
+local opts = {
     ensure_installed = {
         'vim',
         'bash',
@@ -79,14 +79,38 @@ require('nvim-treesitter.configs').setup({
             },
         },
     },
-})
+}
 
-require('nvim-treesitter.parsers').get_parser_configs().ebnf = {
-    install_info = {
-        url = 'https://github.com/RubixDev/ebnf.git',
-        files = { 'src/parser.c' },
-        location = 'crates/tree-sitter-ebnf',
-        branch = 'main',
+return {
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        config = function()
+            require('nvim-treesitter.configs').setup(opts)
+
+            ---@diagnostic disable-next-line: inject-field
+            require('nvim-treesitter.parsers').get_parser_configs().ebnf = {
+                install_info = {
+                    url = 'https://github.com/RubixDev/ebnf.git',
+                    files = { 'src/parser.c' },
+                    location = 'crates/tree-sitter-ebnf',
+                    branch = 'main',
+                },
+            }
+            vim.filetype.add({ extension = { ebnf = 'ebnf' } })
+        end,
+    },
+
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+        },
+    },
+
+    {
+        'windwp/nvim-ts-autotag',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = true,
     },
 }
-vim.filetype.add({ extension = { ebnf = 'ebnf' } })
