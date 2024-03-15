@@ -1,4 +1,4 @@
-require('oil').setup({
+local opts = {
     delete_to_trash = false,
     skip_confirm_for_simple_edits = true,
     keymaps = {
@@ -15,6 +15,14 @@ require('oil').setup({
     view_options = {
         show_hidden = false,
     },
-})
+}
 
-vim.keymap.set('n', '<leader>e', ':Oil<CR>', { silent = true })
+local config = function()
+    require('oil').setup(opts)
+    vim.keymap.set('n', '<leader>e', ':Oil<CR>', { silent = true })
+end
+
+return {
+    'stevearc/oil.nvim',
+    config = config,
+}

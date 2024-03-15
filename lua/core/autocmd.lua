@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
     callback = function()
         local map = vim.api.nvim_buf_set_keymap
         map(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
-    end
+    end,
 })
 
 -- remove auto comment
@@ -28,16 +28,5 @@ end
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'qf',
-    callback = quickfix_keymaps
-})
-
--- disable color colum if window width is less than 80
-vim.api.nvim_create_autocmd({ 'VimResized', 'VimEnter' }, {
-    callback = function()
-        if vim.api.nvim_win_get_width(0) < 80 then
-            vim.cmd('set colorcolumn=')
-        else
-            vim.cmd('set colorcolumn=80')
-        end
-    end
+    callback = quickfix_keymaps,
 })
