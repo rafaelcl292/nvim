@@ -30,3 +30,24 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = 'qf',
     callback = quickfix_keymaps,
 })
+
+-- intro
+local function display_intro(payload)
+    local is_dir = vim.fn.isdirectory(payload.file) == 1
+    local default_buff = vim.api.nvim_get_current_buf()
+    local default_buff_name = vim.api.nvim_buf_get_name(default_buff)
+    if not is_dir and default_buff_name ~= '' then return end
+
+    local intro_buff = vim.api.nvim_create_buf('nobuflisted', 'unlisted')
+    vim.api.nvim_set_option_value('bufhidden', 'wipe', { buf = intro_buff })
+
+    vim.api.nvim_set_current_buf(intro_buff)
+    vim.api.nvim_buf_delete(default_buff, { force = true })
+end
+
+local autocmd_group = vim.api.nvim_create_augroup('intro', {})
+vim.api.nvim_create_autocmd('VimEnter', {
+    group = autocmd_group,
+    callback = display_intro,
+    once = true,
+})
