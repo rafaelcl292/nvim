@@ -23,6 +23,7 @@ local opts = {
         'typescript',
         'yaml',
     },
+    ignore_install = { 'tmux' },
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
     auto_install = true,
