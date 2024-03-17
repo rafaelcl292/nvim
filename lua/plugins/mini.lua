@@ -1,4 +1,4 @@
-local function config()
+local function config_ai()
     local spec_treesitter = require('mini.ai').gen_spec.treesitter
 
     require('mini.ai').setup({
@@ -36,7 +36,9 @@ local function config()
             }),
         },
     })
+end
 
+local function config_surround()
     require('mini.surround').setup({
         custom_surroundings = nil,
 
@@ -62,6 +64,6 @@ local function config()
 end
 
 return {
-    'echasnovski/mini.nvim',
-    config = config,
+    { 'echasnovski/mini.ai', config = config_ai },
+    { 'echasnovski/mini.surround', config = config_surround },
 }
