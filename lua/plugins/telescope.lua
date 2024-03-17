@@ -1,3 +1,9 @@
+local function clear_line()
+    local api = vim.api
+    local replace_termcodes = api.nvim_replace_termcodes
+    api.nvim_feedkeys(replace_termcodes('<C-u>', true, true, true), 'n', true)
+end
+
 local config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
@@ -10,18 +16,7 @@ local config = function()
                     ['<esc>'] = actions.close,
                     ['<C-j>'] = actions.move_selection_next,
                     ['<C-k>'] = actions.move_selection_previous,
-                    ['<C-u>'] = function()
-                        vim.api.nvim_feedkeys(
-                            vim.api.nvim_replace_termcodes(
-                                '<C-u>',
-                                true,
-                                true,
-                                true
-                            ),
-                            'n',
-                            true
-                        )
-                    end,
+                    ['<C-u>'] = clear_line,
                 },
             },
         },
