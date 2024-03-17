@@ -60,7 +60,7 @@ bind('<leader>y', '"+y')
 bind('<leader>Y', '"+y$')
 
 -- select all
-bind('<C-a>', '<Esc>ggVGzz', 'i')
+bind('<leader>A', '<Esc>ggVGzz')
 
 -- search and replace
 bind('<leader>S', ':%s//g<Left><Left>', 'n', { noremap = true })
