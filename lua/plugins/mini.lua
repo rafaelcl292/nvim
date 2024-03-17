@@ -38,38 +38,7 @@ local function config_ai()
     })
 end
 
-local function config_surround()
-    require('mini.surround').setup({
-        custom_surroundings = {
-            ['('] = { output = { left = '(', right = ')' } },
-            ['{'] = { output = { left = '{', right = '}' } },
-            ['['] = { output = { left = '[', right = ']' } },
-        },
-
-        n_lines = 1,
-
-        search_method = 'cover_or_nearest',
-
-        respect_selection_type = true,
-
-        silent = true,
-
-        mappings = {
-            add = 'gs',
-            delete = 'ds',
-            replace = 'cs',
-
-            find = '',
-            find_left = '',
-            highlight = '',
-            update_n_lines = '',
-            suffix_last = '',
-            suffix_next = '',
-        },
-    })
-end
-
 return {
-    { 'echasnovski/mini.ai', config = config_ai },
-    { 'echasnovski/mini.surround', config = config_surround },
+    'echasnovski/mini.ai',
+    config = config_ai,
 }
