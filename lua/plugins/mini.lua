@@ -40,11 +40,17 @@ end
 
 local function config_surround()
     require('mini.surround').setup({
-        custom_surroundings = nil,
+        custom_surroundings = {
+            ['('] = { output = { left = '(', right = ')' } },
+            ['{'] = { output = { left = '{', right = '}' } },
+            ['['] = { output = { left = '[', right = ']' } },
+        },
 
         n_lines = 1,
 
         search_method = 'cover_or_nearest',
+
+        respect_selection_type = true,
 
         silent = true,
 
