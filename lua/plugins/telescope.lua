@@ -35,14 +35,14 @@ local config = function()
     map({ 'n', 'v' }, '<leader>fD', builtin.diagnostics)
     map({ 'n', 'v' }, '<leader>f;', builtin.command_history)
     map({ 'n', 'v' }, '<leader>fd', function()
+        local sorter = require('telescope.sorters').get_generic_fuzzy_sorter()
+        local cmd = { 'fdfind', '--type', 'd' }
+        local finder = require('telescope.finders').new_oneshot_job(cmd, {})
         require('telescope.pickers')
             .new({}, {
                 prompt_title = 'Find Directory',
-                sorter = require('telescope.sorters').get_generic_fuzzy_sorter(),
-                finder = require('telescope.finders').new_oneshot_job(
-                    { 'fdfind', '--type', 'd' },
-                    {}
-                ),
+                sorter = sorter,
+                finder = finder,
             })
             :find()
         vim.api.nvim_feedkeys('./', 'n', true)
