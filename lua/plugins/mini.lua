@@ -11,8 +11,8 @@ local function config_ai()
                 i = '@function.inner',
             }),
             i = spec_treesitter({
-                a = { '@conditional.outer', '@loop.outer' },
-                i = { '@conditional.inner', '@loop.inner' },
+                a = { '@conditional.outer' },
+                i = { '@conditional.inner' },
             }),
             C = spec_treesitter({
                 a = '@class.outer',
@@ -30,9 +30,9 @@ local function config_ai()
                 a = '@return.outer',
                 i = '@return.inner',
             }),
-            b = spec_treesitter({
-                a = '@block.outer',
-                i = '@block.inner',
+            ['='] = spec_treesitter({
+                a = '@assignment.outer',
+                i = '@assignment.inner',
             }),
         },
     })
