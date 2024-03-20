@@ -1,5 +1,4 @@
 local function lsp_config()
-    vim.highlight.priorities.semantic_tokens = 95
     local lsp = require('lsp-zero').preset()
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
     local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -11,16 +10,9 @@ local function lsp_config()
                 runtime = {
                     version = 'LuaJIT',
                 },
-                diagnostics = { disable = { 'missing-fields' } },
-                workspace = {
-                    library = vim.api.nvim_get_runtime_file('', true),
-                },
-                library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                },
-                completion = {
-                    callSnippet = 'Replace',
+                diagnostics = {
+                    disable = { 'missing-fields' },
+                    globals = { 'vim' },
                 },
             },
         },
@@ -48,7 +40,7 @@ local function lsp_config()
         bind('gd', vim.lsp.buf.definition)
         bind('gi', vim.lsp.buf.implementation)
         bind('gr', vim.lsp.buf.references)
-        vim.keymap.set('n', '<Backspace>', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
         bind('<leader>c', vim.lsp.buf.code_action)
     end)
 
@@ -72,6 +64,12 @@ local function lsp_config()
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<A-p>'] = cmp.mapping.select_prev_item(),
             ['<A-n>'] = cmp.mapping.select_next_item(),
+            ['<A-l>'] = cmp.mapping(function()
+                if ls.expand_or_locally_jumpable() then ls.expand_or_jump() end
+            end, { 'i', 's' }),
+            ['<A-h>'] = cmp.mapping(function()
+                if ls.locally_jumpable(-1) then ls.jump(-1) end
+            end, { 'i', 's' }),
             ['<C-l>'] = cmp.mapping(function()
                 if ls.expand_or_locally_jumpable() then ls.expand_or_jump() end
             end, { 'i', 's' }),
