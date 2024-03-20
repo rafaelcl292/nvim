@@ -1,3 +1,17 @@
+local function set_keymaps(bufnr)
+    local opts = { buffer = bufnr, remap = true }
+
+    vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
+end
+
 local function lsp_config()
     local lsp = require('lsp-zero').preset()
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
@@ -23,25 +37,12 @@ local function lsp_config()
         cmd = {
             'clangd',
             '--offset-encoding=utf-16',
-            '--fallback-style=webkit',
         },
     })
 
-    lsp.on_attach(function(_, bufnr)
-        local opts = { buffer = bufnr, remap = true }
-        local function bind(key, cmd)
-            vim.keymap.set({ 'n', 'v' }, key, cmd, opts)
-        end
-
-        bind('<leader>d', vim.diagnostic.open_float)
-        bind('[d', vim.diagnostic.goto_prev)
-        bind(']d', vim.diagnostic.goto_next)
-        bind('<F2>', vim.lsp.buf.rename)
-        bind('gd', vim.lsp.buf.definition)
-        bind('gi', vim.lsp.buf.implementation)
-        bind('gr', vim.lsp.buf.references)
-        vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
-        bind('<leader>c', vim.lsp.buf.code_action)
+    lsp.on_attach(function(client, bufnr)
+        if client.config.name == 'copilot' then return end
+        set_keymaps(bufnr)
     end)
 
     lsp.setup()
