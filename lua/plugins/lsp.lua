@@ -40,6 +40,18 @@ local function lsp_config()
         },
     })
 
+    lsp.use('pylsp', {
+        capabilities = capabilities,
+        settings = {
+            pylsp = {
+                plugins = {
+                    pyflakes = { enabled = false },
+                    pylint = { enabled = false },
+                },
+            },
+        },
+    })
+
     lsp.on_attach(function(client, bufnr)
         if client.config.name == 'copilot' then return end
         set_keymaps(bufnr)
@@ -121,54 +133,6 @@ local function lsp_config()
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 end
 
-local function conform_config()
-    local conform = require('conform')
-    conform.setup()
-
-    conform.formatters_by_ft = {
-        lua = { 'stylua' },
-        go = { 'gofmt', 'goimports' },
-        sh = { 'shfmt' },
-        python = { 'black', 'isort' },
-        ocaml = { 'ocamlformat' },
-        javascript = { 'prettier' },
-        xml = { 'xmlformat' },
-    }
-
-    conform.formatters.stylua = {
-        prepend_args = {
-            '--indent-type',
-            'Spaces',
-            '--quote-style',
-            'AutoPreferSingle',
-            '--column-width',
-            '79',
-            '--collapse-simple-statement',
-            'Always',
-        },
-    }
-
-    conform.formatters.shfmt = {
-        prepend_args = { '-i', '4', '-ci' },
-    }
-
-    conform.formatters.black = {
-        prepend_args = { '--line-length', '79' },
-    }
-
-    vim.keymap.set(
-        { 'v', 'n' },
-        '<leader>s',
-        function()
-            require('conform').format({
-                lsp_fallback = true,
-                async = false,
-                timeout_ms = 500,
-            })
-        end
-    )
-end
-
 local function mason_config()
     local mason = require('mason')
     local mason_lspconfig = require('mason-lspconfig')
@@ -235,13 +199,6 @@ return {
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
             'saadparwaiz1/cmp_luasnip',
-
-            -- Formatting
-            {
-                'stevearc/conform.nvim',
-                dependencies = 'williamboman/mason.nvim',
-                config = conform_config,
-            },
 
             -- Auto-pairs
             {
