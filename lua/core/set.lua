@@ -35,6 +35,10 @@ vim.opt.timeout = false
 
 vim.opt.report = 100
 
+-- persistent undo
+vim.opt.undodir = '/tmp/undo'
+vim.opt.undofile = true
+
 -- wsl clipboard
 vim.g.clipboard = {
     name = 'WslClipboard',
