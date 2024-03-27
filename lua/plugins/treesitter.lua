@@ -97,9 +97,10 @@ return {
         build = ':TSUpdate',
         config = function()
             require('nvim-treesitter.configs').setup(opts)
+            local parsers = require('nvim-treesitter.parsers')
+            local parser_config = parsers.get_parser_configs()
 
-            ---@diagnostic disable-next-line: inject-field
-            require('nvim-treesitter.parsers').get_parser_configs().ebnf = {
+            parser_config.ebnf = {
                 install_info = {
                     url = 'https://github.com/RubixDev/ebnf.git',
                     files = { 'src/parser.c' },
