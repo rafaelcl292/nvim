@@ -10,6 +10,16 @@ local function conform_config()
         ocaml = { 'ocamlformat' },
         javascript = { 'prettier' },
         xml = { 'xmlformat' },
+        json = { 'jq' },
+        yaml = { 'yq' },
+    }
+
+    conform.formatters.jq = {
+        prepend_args = { '-j' },
+    }
+
+    conform.formatters.yq = {
+        prepend_args = { '--indent', '4' },
     }
 
     conform.formatters.stylua = {
