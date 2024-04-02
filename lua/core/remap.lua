@@ -16,9 +16,6 @@ bind('<leader>w', ':w<CR>')
 bind('<leader>v', '<C-v>')
 bind('<C-q>', '')
 
--- maximize
-bind('<leader>m', '<C-w>o')
-
 -- terminal
 bind('<leader>t', function()
     vim.cmd('new')
@@ -146,3 +143,12 @@ bind(']f', file_next)
 bind('[f', file_previous)
 bind(']g', ':Gitsigns next_hunk<CR>')
 bind('[g', ':Gitsigns prev_hunk<CR>')
+
+-- toggle colorcolumn=80
+bind('<leader>?', function()
+    if vim.o.colorcolumn == '80' then
+        vim.cmd('set colorcolumn=')
+        return
+    end
+    vim.cmd('set colorcolumn=80')
+end)
