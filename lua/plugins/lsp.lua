@@ -9,7 +9,7 @@ local function set_keymaps(bufnr)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>C', vim.lsp.buf.code_action, opts)
 end
 
 local function lsp_config()
@@ -72,9 +72,9 @@ local function lsp_config()
         },
         preselect = cmp.PreselectMode.None,
         mapping = cmp.mapping.preset.insert({
+            ['<C-e>'] = function(fallback) fallback() end,
             ['<A-i>'] = cmp.mapping.confirm({ select = true }),
             ['<C-q>'] = cmp.mapping.close(),
-            ['<C-Space>'] = cmp.mapping.complete(),
             ['<A-p>'] = cmp.mapping.select_prev_item(),
             ['<A-n>'] = cmp.mapping.select_next_item(),
             ['<A-l>'] = cmp.mapping(function()

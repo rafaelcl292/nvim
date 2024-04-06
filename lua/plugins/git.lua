@@ -6,10 +6,24 @@ local lazygit_config = function()
 end
 
 local copilot_config = function()
-    vim.g.copilot_enabled = true
+    vim.g.copilot_enabled = false
     vim.g.copilot_filetypes =
         { markdown = true, gitcommit = true, text = true, [''] = true }
     vim.keymap.set('i', '<C-q>', '<Plug>(copilot-dismiss)')
+    vim.keymap.set('i', '<C-e>', '<Plug>(copilot-accept-line)')
+    vim.keymap.set('i', '<C-a>', '<Plug>(copilot-accept-word)')
+    vim.keymap.set('i', '<C-s>', '<Plug>(copilot-suggest)')
+    vim.keymap.set('n', '<leader>c', function()
+        if vim.g.copilot_enabled then
+            vim.cmd('Copilot disable')
+            print('Copilot disabled')
+            vim.g.copilot_enabled = false
+        else
+            vim.cmd('Copilot enable')
+            print('Copilot enabled')
+            vim.g.copilot_enabled = true
+        end
+    end)
 end
 
 return {
