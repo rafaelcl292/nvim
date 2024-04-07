@@ -42,14 +42,6 @@ local function lsp_config()
 
     lsp.use('pylsp', {
         capabilities = capabilities,
-        settings = {
-            pylsp = {
-                plugins = {
-                    pyflakes = { enabled = false },
-                    pylint = { enabled = false },
-                },
-            },
-        },
     })
 
     lsp.on_attach(function(client, bufnr)
