@@ -10,12 +10,8 @@ local function conform_config()
         ocaml = { 'ocamlformat' },
         javascript = { 'prettier' },
         xml = { 'xmlformat' },
-        json = { 'jq' },
+        json = { 'fixjson' },
         yaml = { 'yq' },
-    }
-
-    conform.formatters.jq = {
-        prepend_args = { '-j' },
     }
 
     conform.formatters.yq = {
