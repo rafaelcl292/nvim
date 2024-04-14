@@ -13,6 +13,7 @@ local opts = {
         'html',
         'java',
         'javascript',
+        'jsdoc',
         'json',
         'jsonc',
         'lua',
