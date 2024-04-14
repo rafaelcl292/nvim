@@ -34,6 +34,7 @@ local config = function()
     map({ 'n', 'v' }, '<leader>fk', builtin.keymaps)
     map({ 'n', 'v' }, '<leader>fD', builtin.diagnostics)
     map({ 'n', 'v' }, '<leader>f;', builtin.command_history)
+    map({ 'n', 'v' }, '<leader>fr', builtin.lsp_references)
     map({ 'n', 'v' }, '<leader>fd', function()
         local sorter = require('telescope.sorters').get_generic_fuzzy_sorter()
         local cmd = { 'fdfind', '--type', 'd' }
