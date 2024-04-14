@@ -41,7 +41,7 @@ local function lsp_config()
     })
 
     lsp.on_attach(function(client, bufnr)
-        if client.config.name == 'copilot' then return end
+        if client.config.name == 'GitHub Copilot' then return end
         set_keymaps(bufnr)
     end)
 

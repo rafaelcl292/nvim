@@ -6,7 +6,7 @@ local lazygit_config = function()
 end
 
 local copilot_config = function()
-    vim.g.copilot_enabled = false
+    vim.g.copilot_enabled = true
     vim.g.copilot_filetypes =
         { markdown = true, gitcommit = true, text = true, [''] = true }
     vim.keymap.set('i', '<C-q>', '<Plug>(copilot-dismiss)')

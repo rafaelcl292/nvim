@@ -22,6 +22,7 @@ local config = function()
         },
     })
     telescope.load_extension('fzf')
+    telescope.load_extension('ui-select')
 
     local map = vim.keymap.set
     map({ 'n', 'v' }, '<leader>fa', builtin.find_files)
@@ -68,6 +69,7 @@ return {
         'nvim-lua/plenary.nvim',
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
         'nvim-tree/nvim-web-devicons',
+        'nvim-telescope/telescope-ui-select.nvim',
     },
     config = config,
 }
