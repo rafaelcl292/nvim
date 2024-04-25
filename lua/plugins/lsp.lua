@@ -6,7 +6,7 @@ local function set_keymaps(bufnr)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<leader>C', vim.lsp.buf.code_action, opts)
@@ -38,10 +38,6 @@ local function lsp_config()
             'clangd',
             '--offset-encoding=utf-16',
         },
-    })
-
-    lsp.use('pylsp', {
-        capabilities = capabilities,
     })
 
     lsp.on_attach(function(client, bufnr)
@@ -147,7 +143,7 @@ local function mason_config()
 
     require('mason-tool-installer').setup({
         ensure_installed = {
-            'python-lsp-server',
+            'pyright',
             'bash-language-server',
             'lua-language-server',
             'stylua',
