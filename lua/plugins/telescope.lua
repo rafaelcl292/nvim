@@ -1,10 +1,20 @@
+local M = {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope-fzf-native.nvim',
+        'nvim-tree/nvim-web-devicons',
+        'nvim-telescope/telescope-ui-select.nvim',
+    },
+}
+
 local function clear_line()
     local api = vim.api
     local replace_termcodes = api.nvim_replace_termcodes
     api.nvim_feedkeys(replace_termcodes('<C-u>', true, true, true), 'n', true)
 end
 
-local config = function()
+function M.config()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
     local builtin = require('telescope.builtin')
@@ -21,6 +31,7 @@ local config = function()
             },
         },
     })
+    -- go to .local/share/nvim and run `make` in telescope-fzf-native
     telescope.load_extension('fzf')
     telescope.load_extension('ui-select')
 
@@ -63,13 +74,4 @@ local config = function()
     )
 end
 
-return {
-    'nvim-telescope/telescope.nvim',
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-        'nvim-tree/nvim-web-devicons',
-        'nvim-telescope/telescope-ui-select.nvim',
-    },
-    config = config,
-}
+return M

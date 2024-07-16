@@ -38,7 +38,7 @@ local function display_intro(payload)
     local default_buff_name = vim.api.nvim_buf_get_name(default_buff)
     if not is_dir and default_buff_name ~= '' then return end
 
-    local intro_buff = vim.api.nvim_create_buf('nobuflisted', 'unlisted')
+    local intro_buff = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_set_option_value('bufhidden', 'wipe', { buf = intro_buff })
 
     vim.api.nvim_set_current_buf(intro_buff)

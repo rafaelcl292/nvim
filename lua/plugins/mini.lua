@@ -1,4 +1,4 @@
-local function config_ai()
+local function config()
     local spec_treesitter = require('mini.ai').gen_spec.treesitter
 
     require('mini.ai').setup({
@@ -40,5 +40,5 @@ end
 
 return {
     'echasnovski/mini.ai',
-    config = config_ai,
+    config = config,
 }

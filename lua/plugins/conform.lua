@@ -1,4 +1,4 @@
-local function conform_config()
+local function config()
     local conform = require('conform')
     conform.setup()
 
@@ -11,11 +11,11 @@ local function conform_config()
         javascript = { 'prettier' },
         xml = { 'xmlformat' },
         json = { 'fixjson' },
-        yaml = { 'yq' },
+        yaml = { 'yamlfmt' },
     }
 
-    conform.formatters.yq = {
-        prepend_args = { '--indent', '4' },
+    conform.formatters.yamlfmt = {
+        prepend_args = { '-formatter', 'retain_line_breaks_single=true' },
     }
 
     conform.formatters.stylua = {
@@ -39,20 +39,17 @@ local function conform_config()
         prepend_args = { '--line-length', '79' },
     }
 
-    vim.keymap.set(
-        { 'v', 'n' },
-        '<leader>s',
-        function()
-            require('conform').format({
-                lsp_fallback = true,
-                async = false,
-                timeout_ms = 500,
-            })
-        end
-    )
+    local function conform_format()
+        conform.format({
+            lsp_fallback = true,
+            async = false,
+            timeout_ms = 500,
+        })
+    end
+    vim.keymap.set({ 'v', 'n' }, '<leader>s', conform_format)
 end
 
 return {
     'stevearc/conform.nvim',
-    config = conform_config,
+    config = config,
 }

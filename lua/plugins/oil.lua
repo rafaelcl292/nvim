@@ -1,4 +1,6 @@
-local opts = {
+local M = { 'stevearc/oil.nvim' }
+
+M.opts = {
     delete_to_trash = false,
     skip_confirm_for_simple_edits = true,
     keymaps = {
@@ -17,12 +19,8 @@ local opts = {
     },
 }
 
-local config = function()
-    require('oil').setup(opts)
-    vim.keymap.set('n', '<leader>e', ':Oil<CR>', { silent = true })
-end
-
-return {
-    'stevearc/oil.nvim',
-    config = config,
+M.keys = {
+    { '<leader>e', '<cmd>Oil<cr>' },
 }
+
+return M
