@@ -1,5 +1,6 @@
 return {
     '0x00-ketsu/autosave.nvim',
+    event = { 'InsertLeave', 'TextChanged' },
     opts = {
         prompt_message = function() return '' end,
         conditions = {

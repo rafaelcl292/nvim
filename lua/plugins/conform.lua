@@ -52,4 +52,5 @@ end
 return {
     'stevearc/conform.nvim',
     config = config,
+    event = 'VeryLazy',
 }

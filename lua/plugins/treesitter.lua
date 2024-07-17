@@ -83,7 +83,7 @@ opts.textobjects = {
     },
 }
 
-local function treej_config()
+local function treesj_config()
     local tsj = require('treesj')
     tsj.setup({
         use_default_keymaps = false,
@@ -93,12 +93,13 @@ local function treej_config()
 end
 
 return {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    config = function() require('nvim-treesitter.configs').setup(opts) end,
-    dependencies = {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        { 'windwp/nvim-ts-autotag', config = true },
-        { 'Wansmer/treesj', config = treej_config },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        config = function() require('nvim-treesitter.configs').setup(opts) end,
+        event = 'VeryLazy'
     },
+    { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VeryLazy' },
+    { 'Wansmer/treesj', config = treesj_config, event = 'VeryLazy' },
+    { 'windwp/nvim-ts-autotag', config = true, event = 'InsertEnter' },
 }

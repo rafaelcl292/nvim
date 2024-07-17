@@ -7,6 +7,7 @@ M.dependencies = {
         'L3MON4D3/LuaSnip',
         build = 'make install_jsregexp',
         dependencies = 'rafamadriz/friendly-snippets',
+        event = 'VeryLazy',
     },
     'neovim/nvim-lspconfig',
     'hrsh7th/cmp-nvim-lsp',
@@ -19,6 +20,7 @@ M.dependencies = {
     {
         'windwp/nvim-autopairs',
         config = true,
+        event = 'VeryLazy',
     },
 }
 

@@ -22,7 +22,7 @@ end
 return {
     {
         'github/copilot.vim',
-        event = 'InsertEnter',
+        event = 'BufReadPre',
         keys = {
             { '<C-q>', '<Plug>(copilot-dismiss)', mode = 'i' },
             { '<C-e>', '<Plug>(copilot-accept-line)', mode = 'i' },
@@ -31,7 +31,7 @@ return {
             { '<leader>c', copilot_toggle },
         },
     },
-    { 'lewis6991/gitsigns.nvim', config = true },
+    { 'lewis6991/gitsigns.nvim', config = true, event = 'BufReadPre' },
     {
         'kdheepak/lazygit.nvim',
         cmd = {

@@ -19,4 +19,5 @@ end
 return {
     'numToStr/Comment.nvim',
     config = config,
+    event = 'VeryLazy',
 }
