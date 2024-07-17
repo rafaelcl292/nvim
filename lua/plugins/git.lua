@@ -1,43 +1,47 @@
-local lazygit_config = function()
-    local modes = { 'n', 'v' }
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set(modes, '<leader>g', ':LazyGit<CR>', opts)
-    vim.g.lazygit_floating_window_scaling_factor = 1
-end
+vim.g.lazygit_floating_window_scaling_factor = 1
+vim.g.copilot_enabled = true
+vim.g.copilot_filetypes = {
+    markdown = true,
+    gitcommit = true,
+    text = true,
+    [''] = true,
+}
 
-local copilot_config = function()
-    vim.g.copilot_enabled = true
-    vim.g.copilot_filetypes = {
-        markdown = true,
-        gitcommit = true,
-        text = true,
-        [''] = true,
-    }
-    vim.keymap.set('i', '<C-q>', '<Plug>(copilot-dismiss)')
-    vim.keymap.set('i', '<C-e>', '<Plug>(copilot-accept-line)')
-    vim.keymap.set('i', '<C-a>', '<Plug>(copilot-accept-word)')
-    vim.keymap.set('i', '<C-s>', '<Plug>(copilot-suggest)')
-    vim.keymap.set('n', '<leader>c', function()
-        if vim.g.copilot_enabled then
-            vim.cmd('Copilot disable')
-            print('Copilot disabled')
-            vim.g.copilot_enabled = false
-        else
-            vim.cmd('Copilot enable')
-            print('Copilot enabled')
-            vim.g.copilot_enabled = true
-        end
-    end)
+local function copilot_toggle()
+    if vim.g.copilot_enabled then
+        vim.cmd('Copilot disable')
+        print('Copilot disabled')
+        vim.g.copilot_enabled = false
+    else
+        vim.cmd('Copilot enable')
+        print('Copilot enabled')
+        vim.g.copilot_enabled = true
+    end
 end
 
 return {
-    { 'github/copilot.vim', config = copilot_config },
+    {
+        'github/copilot.vim',
+        event = 'InsertEnter',
+        keys = {
+            { '<C-q>', '<Plug>(copilot-dismiss)', mode = 'i' },
+            { '<C-e>', '<Plug>(copilot-accept-line)', mode = 'i' },
+            { '<C-a>', '<Plug>(copilot-accept-word)', mode = 'i' },
+            { '<C-s>', '<Plug>(copilot-suggest)', mode = 'i' },
+            { '<leader>c', copilot_toggle },
+        },
+    },
     { 'lewis6991/gitsigns.nvim', config = true },
     {
         'kdheepak/lazygit.nvim',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
+        cmd = {
+            'LazyGit',
+            'LazyGitConfig',
+            'LazyGitCurrentFile',
+            'LazyGitFilter',
+            'LazyGitFilterCurrentFile',
         },
-        config = lazygit_config,
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        keys = { { '<leader>g', '<cmd>LazyGit<cr>', desc = 'LazyGit' } },
     },
 }

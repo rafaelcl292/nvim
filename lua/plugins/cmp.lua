@@ -1,5 +1,7 @@
 M = { 'hrsh7th/nvim-cmp' }
 
+M.event = { 'InsertEnter', 'CmdlineEnter' }
+
 M.dependencies = {
     {
         'L3MON4D3/LuaSnip',
@@ -16,7 +18,6 @@ M.dependencies = {
     'Snikimonkd/cmp-go-pkgs',
     {
         'windwp/nvim-autopairs',
-        event = 'InsertEnter',
         config = true,
     },
 }
