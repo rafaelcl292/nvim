@@ -37,6 +37,8 @@ vim.opt.report = 100
 
 vim.opt.updatetime = 500
 
+vim.opt.swapfile = false
+
 -- persistent undo
 vim.opt.undodir = '/tmp/undo'
 vim.opt.undofile = true
