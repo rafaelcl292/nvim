@@ -23,4 +23,6 @@ M.keys = {
     { '<leader>e', '<cmd>Oil<cr>' },
 }
 
+M.lazy = false
+
 return M
