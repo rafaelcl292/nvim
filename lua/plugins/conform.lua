@@ -12,6 +12,7 @@ local function config()
         xml = { 'xmlformat' },
         json = { 'fixjson' },
         yaml = { 'yamlfmt' },
+        javascriptreact = { 'prettier' },
     }
 
     conform.formatters.yamlfmt = {

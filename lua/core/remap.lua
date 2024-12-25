@@ -75,9 +75,6 @@ end)
 -- search without smartcase
 bind('<leader>/', [[/\C]], 'n', { noremap = true })
 
--- undo
-bind('u', ':silent undo<CR>')
-
 bind('<', '<gv', 'v')
 bind('>', '>gv', 'v')
 
