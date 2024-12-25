@@ -18,6 +18,7 @@ return {
         },
         log_level = 'off',
     },
+    ignore_filetypes = { 'copilot-chat' },
     keys = {
         { '<leader>c', toggle_supermaven },
     },

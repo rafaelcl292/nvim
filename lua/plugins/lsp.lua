@@ -13,6 +13,7 @@ M.dependencies = {
 local function on_attach(args)
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client == nil then return end
     if client.config.name == 'GitHub Copilot' then return end
 
     local opts = { buffer = bufnr, remap = true }
@@ -64,12 +65,10 @@ function M.config()
     require('mason-lspconfig').setup({
         ensure_installed = {
             'rust_analyzer',
-            'tsserver',
             'html',
             'tailwindcss',
             'emmet_ls',
             'lua_ls',
-            'cssls',
             'gopls',
             'pyright',
             'bashls',
