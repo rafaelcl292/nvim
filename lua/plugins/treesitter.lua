@@ -97,7 +97,7 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         config = function() require('nvim-treesitter.configs').setup(opts) end,
-        event = 'VeryLazy'
+        event = 'VeryLazy',
     },
     { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VeryLazy' },
     { 'Wansmer/treesj', config = treesj_config, event = 'VeryLazy' },
