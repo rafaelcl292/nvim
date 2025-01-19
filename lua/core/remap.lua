@@ -130,8 +130,8 @@ end
 
 bind(']<Space>', 'o<Esc>k', 'n')
 bind('[<Space>', 'O<Esc>j', 'n')
-bind(']y', 'yyp', 'n')
-bind('[y', 'yyP', 'n')
+bind(']y', 'yyP', 'n')
+bind('[y', 'yyp', 'n')
 bind(']b', ':bnext<CR>')
 bind('[b', ':bprevious<CR>')
 bind(']t', ':tabnext<CR>')
