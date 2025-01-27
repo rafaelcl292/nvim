@@ -133,6 +133,12 @@ function M.config()
     vim.api.nvim_create_autocmd('LspAttach', {
         callback = on_attach,
     })
+    vim.diagnostic.config({
+        signs = true,
+        underline = true,
+        virtual_text = true,
+        severity_sort = true,
+    })
 end
 
 return M
