@@ -40,7 +40,10 @@ return {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
 
-        signature = { enabled = true },
+        signature = {
+            enabled = true,
+            window = { show_documentation = true },
+        },
 
         completion = {
             documentation = { auto_show = true, auto_show_delay_ms = 500 },
