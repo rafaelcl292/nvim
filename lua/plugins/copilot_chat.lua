@@ -10,7 +10,7 @@ return {
     },
     event = 'VeryLazy',
     opts = {
-        model = 'gpt-4o',
+        model = 'o1-mini',
         debug = false,
         show_help = false,
         mappings = {
