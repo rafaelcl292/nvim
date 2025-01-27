@@ -6,8 +6,16 @@ M.dependencies = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    'hrsh7th/cmp-nvim-lsp',
-    { 'folke/neodev.nvim', opts = {} },
+    'saghen/blink.cmp',
+    {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+            library = {
+                { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+            },
+        },
+    },
 }
 
 local function on_attach(args)
@@ -17,10 +25,11 @@ local function on_attach(args)
     if client.config.name == 'GitHub Copilot' then return end
 
     local opts = { buffer = bufnr, remap = true }
+    local jump = vim.diagnostic.jump
 
     vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '[d', function() jump({ count = -1 }) end, opts)
+    vim.keymap.set('n', ']d', function() jump({ count = 1 }) end, opts)
     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
@@ -76,7 +85,7 @@ function M.config()
         automatic_installation = true,
     })
 
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     require('mason-lspconfig').setup_handlers({
         function(server_name)
