@@ -73,11 +73,9 @@ function M.config()
     end
 
     local function find_in_buffer()
-        builtin.current_buffer_fuzzy_find(
-            require('telescope.themes').get_dropdown({
-                previewer = false,
-            })
-        )
+        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+            previewer = false,
+        }))
     end
 
     local map = vim.keymap.set

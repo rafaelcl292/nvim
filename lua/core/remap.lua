@@ -141,11 +141,11 @@ bind('[f', file_previous)
 bind(']g', ':Gitsigns next_hunk<CR>')
 bind('[g', ':Gitsigns prev_hunk<CR>')
 
--- toggle colorcolumn=80
+-- toggle colorcolumn=88
 bind('<leader>?', function()
-    if vim.o.colorcolumn == '80' then
+    if vim.o.colorcolumn == '88' then
         vim.cmd('set colorcolumn=')
         return
     end
-    vim.cmd('set colorcolumn=80')
+    vim.cmd('set colorcolumn=88')
 end)

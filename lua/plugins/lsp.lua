@@ -1,11 +1,10 @@
 local M = { 'neovim/nvim-lspconfig' }
 
-M.event = 'BufReadPre'
+M.event = 'VeryLazy'
 
 M.dependencies = {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
     'saghen/blink.cmp',
     {
         'folke/lazydev.nvim',
@@ -35,7 +34,7 @@ local function on_attach(args)
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<leader>C', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
 
     -- highlight references (delay is defined by `set updatetime`)
     if client and client.server_capabilities.documentHighlightProvider then
@@ -54,10 +53,7 @@ local function on_attach(args)
         })
 
         vim.api.nvim_create_autocmd('LspDetach', {
-            group = vim.api.nvim_create_augroup(
-                'lsp-detach',
-                { clear = true }
-            ),
+            group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
             callback = function(event)
                 vim.lsp.buf.clear_references()
                 vim.api.nvim_clear_autocmds({
@@ -75,11 +71,10 @@ function M.config()
         ensure_installed = {
             'rust_analyzer',
             'html',
-            'tailwindcss',
             'emmet_ls',
             'lua_ls',
             'gopls',
-            'pyright',
+            'ruff',
             'bashls',
         },
         automatic_installation = true,
@@ -116,23 +111,10 @@ function M.config()
         end,
     })
 
-    require('mason-tool-installer').setup({
-        ensure_installed = {
-            'stylua',
-            'goimports',
-            'shfmt',
-            'black',
-            'isort',
-            'fixjson',
-            'xmlformatter',
-            'prettier',
-            'yamlfmt',
-        },
-    })
-
     vim.api.nvim_create_autocmd('LspAttach', {
         callback = on_attach,
     })
+
     vim.diagnostic.config({
         signs = true,
         underline = true,

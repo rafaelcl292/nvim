@@ -6,7 +6,7 @@ local function config()
         lua = { 'stylua' },
         go = { 'gofmt', 'goimports' },
         sh = { 'shfmt' },
-        python = { 'black', 'isort' },
+        python = { 'ruff_format', 'ruff_fix', 'ruff_organize_imports' },
         ocaml = { 'ocamlformat' },
         javascript = { 'prettier' },
         xml = { 'xmlformat' },
@@ -26,7 +26,7 @@ local function config()
             '--quote-style',
             'AutoPreferSingle',
             '--column-width',
-            '79',
+            '88',
             '--collapse-simple-statement',
             'Always',
         },
@@ -34,10 +34,6 @@ local function config()
 
     conform.formatters.shfmt = {
         prepend_args = { '-i', '4', '-ci' },
-    }
-
-    conform.formatters.black = {
-        prepend_args = { '--line-length', '79' },
     }
 
     local function conform_format()
