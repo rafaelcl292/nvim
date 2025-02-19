@@ -1,4 +1,5 @@
 vim.g.lazygit_floating_window_scaling_factor = 1
+vim.env.GIT_EDITOR = "nvr --remote-tab-wait +'set bufhidden=delete'"
 
 return {
     { 'lewis6991/gitsigns.nvim', config = true, event = 'BufReadPre' },
