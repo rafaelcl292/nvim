@@ -9,10 +9,12 @@ local function config()
         python = { 'ruff_format', 'ruff_fix', 'ruff_organize_imports' },
         ocaml = { 'ocamlformat' },
         javascript = { 'prettier' },
+        typescript = { 'prettier' },
         xml = { 'xmlformat' },
         json = { 'fixjson' },
         yaml = { 'yamlfmt' },
         javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
     }
 
     conform.formatters.yamlfmt = {

@@ -21,7 +21,7 @@ local function on_attach(args)
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client == nil then return end
-    if client.config.name == 'GitHub Copilot' then return end
+    if client.config.name == 'copilot' then return end
 
     local opts = { buffer = bufnr, remap = true }
     local jump = vim.diagnostic.jump
@@ -66,6 +66,11 @@ local function on_attach(args)
 end
 
 function M.config()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
+    require('lspconfig').zls.setup({
+        capabilities = capabilities,
+    })
+
     require('mason').setup()
     require('mason-lspconfig').setup({
         ensure_installed = {
@@ -79,8 +84,6 @@ function M.config()
         },
         automatic_installation = true,
     })
-
-    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     require('mason-lspconfig').setup_handlers({
         function(server_name)

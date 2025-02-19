@@ -22,7 +22,10 @@ return {
             ['A-h'] = { 'snippet_backward' },
             ['<C-l>'] = { 'snippet_forward' },
             ['<C-h>'] = { 'snippet_backward' },
-            cmdline = {
+        },
+
+        cmdline = {
+            keymap = {
                 preset = 'none',
                 ['<Tab>'] = { 'select_next' },
                 ['<S-Tab>'] = { 'select_prev' },
