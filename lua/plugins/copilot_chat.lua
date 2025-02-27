@@ -21,11 +21,12 @@ return {
     },
     keys = {
         { '<leader>j', '<cmd>CopilotChatToggle<cr>', mode = { 'n', 'v' } },
+        { 'gC', '<cmd>CopilotChatCommit<cr>', mode = { 'n', 'v' } },
     },
     event = 'VeryLazy',
     opts = {
         system_prompt = system_prompt,
-        model = 'o3-mini',
+        model = 'gemini-2.0-flash-001',
         debug = false,
         show_help = false,
         mappings = {
