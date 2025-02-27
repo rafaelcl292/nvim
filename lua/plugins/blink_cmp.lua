@@ -32,6 +32,14 @@ return {
                 ['<A-p>'] = { 'select_prev' },
                 ['<A-n>'] = { 'select_next' },
             },
+            completion = {
+                list = {
+                    selection = {
+                        preselect = false,
+                    },
+                },
+                menu = { auto_show = true },
+            },
         },
 
         appearance = {
