@@ -2,11 +2,12 @@
 vim.cmd('au TextYankPost * lua vim.hl.on_yank {}')
 
 -- terminal settings
-vim.cmd('au TermOpen * setlocal nonumber norelativenumber')
-vim.cmd('au TermOpen * startinsert')
 vim.cmd('au BufEnter * if &buftype == "terminal" | startinsert | endif')
 vim.api.nvim_create_autocmd('TermOpen', {
     callback = function()
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.cmd.startinsert()
         local map = vim.api.nvim_buf_set_keymap
         map(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
     end,

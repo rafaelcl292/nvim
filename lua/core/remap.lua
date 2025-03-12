@@ -18,15 +18,15 @@ bind('<C-q>', '')
 
 -- terminal
 bind('<leader>t', function()
-    vim.cmd('new')
-    vim.cmd('wincmd J')
-    vim.cmd('horizontal resize ' .. math.floor(vim.o.lines * 0.30))
-    vim.cmd('terminal ')
+    vim.cmd.new()
+    vim.cmd.wincmd('J')
+    vim.api.nvim_win_set_height(0, math.floor(vim.o.lines * 0.30))
+    vim.cmd.terminal()
 end)
 bind('<leader>T', function()
-    vim.cmd('vnew')
-    vim.cmd('terminal')
-    vim.cmd('vertical resize ' .. math.floor(vim.o.columns * 0.33))
+    vim.cmd.vnew()
+    vim.cmd.terminal()
+    vim.api.nvim_win_set_width(0, math.floor(vim.o.columns * 0.33))
 end)
 bind('<C-q>', [[<C-\><C-n>]], 't')
 bind('<C-d>', [[<C-\><C-n>:bd!<CR>]], 't')
@@ -144,8 +144,8 @@ bind('[g', ':Gitsigns prev_hunk<CR>')
 -- toggle colorcolumn=88
 bind('<leader>?', function()
     if vim.o.colorcolumn == '88' then
-        vim.cmd('set colorcolumn=')
+        vim.cmd.set('colorcolumn=')
         return
     end
-    vim.cmd('set colorcolumn=88')
+    vim.cmd.set('colorcolumn=88')
 end)

@@ -42,7 +42,7 @@ local function config()
         conform.format({
             lsp_fallback = true,
             async = false,
-            timeout_ms = 500,
+            timeout_ms = 600,
         })
     end
     vim.keymap.set({ 'v', 'n' }, '<leader>s', conform_format)
