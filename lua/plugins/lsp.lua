@@ -67,9 +67,6 @@ end
 
 function M.config()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
-    require('lspconfig').zls.setup({
-        capabilities = capabilities,
-    })
 
     require('mason').setup()
     require('mason-lspconfig').setup({
