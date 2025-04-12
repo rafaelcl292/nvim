@@ -24,19 +24,11 @@ local function on_attach(args)
     if client.config.name == 'copilot' then return end
 
     local opts = { buffer = bufnr, remap = true }
-    local jump = vim.diagnostic.jump
 
-    vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '[d', function() jump({ count = -1 }) end, opts)
-    vim.keymap.set('n', ']d', function() jump({ count = 1 }) end, opts)
     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
 
-    -- highlight references (delay is defined by `set updatetime`)
     if client and client.server_capabilities.documentHighlightProvider then
         local highlight_augroup =
             vim.api.nvim_create_augroup('lsp-highlight', { clear = false })

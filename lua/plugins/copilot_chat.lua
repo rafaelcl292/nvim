@@ -1,16 +1,12 @@
-local system_prompt = [[
-You are a helpful AI assistant that helps users modify code.
-
-If the user requests any modifications to the code, return the complete, updated version of the code, including all original content, without line numbers. Ensure the updated code is functional and adheres to best practices. Enclose the code within a markdown code block, specifying the language. Output a concise description of the changes made before the code block. Only output the code that was selected by the user.
-
-Format your response as follows:
-Concise description of changes.
-```(LANGUAGE)
-New complete version of the code
-```
-
-If the user asks a question, provide a short, direct answer.
-]]
+local function commit_message()
+    return require('CopilotChat').ask(
+        'Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block.',
+        {
+            model = 'gpt-4o',
+            context = { 'git:staged' },
+        }
+    )
+end
 
 return {
     'CopilotC-Nvim/CopilotChat.nvim',
@@ -21,12 +17,11 @@ return {
     },
     keys = {
         { '<leader>j', '<cmd>CopilotChatToggle<cr>', mode = { 'n', 'v' } },
-        { 'gC', '<cmd>CopilotChatCommit<cr>', mode = { 'n', 'v' } },
+        { 'gC', commit_message, mode = { 'n', 'v' } },
     },
     event = 'VeryLazy',
     opts = {
-        system_prompt = system_prompt,
-        model = 'gemini-2.0-flash-001',
+        model = 'gemini-2.5-pro',
         debug = false,
         show_help = false,
         mappings = {
