@@ -59,22 +59,10 @@ end
 
 function M.config()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
+    require('lspconfig').gleam.setup({})
 
     require('mason').setup()
     require('mason-lspconfig').setup({
-        ensure_installed = {
-            'rust_analyzer',
-            'html',
-            'emmet_ls',
-            'lua_ls',
-            'gopls',
-            'ruff',
-            'bashls',
-        },
-        automatic_installation = true,
-    })
-
-    require('mason-lspconfig').setup_handlers({
         function(server_name)
             require('lspconfig')[server_name].setup({
                 capabilities = capabilities,
@@ -101,6 +89,17 @@ function M.config()
                 },
             })
         end,
+        ensure_installed = {
+            'rust_analyzer',
+            'html',
+            'emmet_ls',
+            'lua_ls',
+            'gopls',
+            'ruff',
+            'bashls',
+        },
+        automatic_installation = true,
+        automatic_enable = true,
     })
 
     vim.api.nvim_create_autocmd('LspAttach', {

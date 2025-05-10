@@ -18,6 +18,8 @@ return {
             ['<C-n>'] = { 'select_next' },
             ['<A-p>'] = { 'select_prev' },
             ['<A-n>'] = { 'select_next' },
+            ['<Down>'] = { 'select_next' },
+            ['<Up>'] = { 'select_prev' },
             ['A-l'] = { 'snippet_forward' },
             ['A-h'] = { 'snippet_backward' },
             ['<C-l>'] = { 'snippet_forward' },

@@ -26,6 +26,7 @@ local opts = {
             accept = false,
             dismiss = '<C-q>',
             accept_word = '<C-a>',
+            accept_line = '<C-e>',
             next = false,
             prev = false,
         },
