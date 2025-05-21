@@ -59,7 +59,8 @@ end
 
 function M.config()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
-    require('lspconfig').gleam.setup({})
+    vim.lsp.enable('gleam')
+    vim.lsp.enable('ty')
 
     require('mason').setup()
     require('mason-lspconfig').setup({
