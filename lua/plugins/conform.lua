@@ -11,22 +11,14 @@ local function config()
         xml = { 'xmlformat' },
         json = { 'fixjson' },
         yaml = { 'yamlfmt' },
-        javascript = { 'biome' },
-        typescript = { 'biome' },
-        javascriptreact = { 'biome' },
-        typescriptreact = { 'biome' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
     }
 
     conform.formatters.yamlfmt = {
         prepend_args = { '-formatter', 'retain_line_breaks_single=true' },
-    }
-
-    conform.formatters.biome = {
-        prepend_args = {
-            'format',
-            '--indent-width=2',
-            '--indent-style=space',
-        },
     }
 
     conform.formatters.stylua = {
