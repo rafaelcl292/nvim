@@ -10,7 +10,7 @@ local function commit_message()
         'Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block.',
         {
             model = 'gpt-4.1',
-            context = { 'git:staged' },
+            sticky = { '##git://diff/staged' },
             selection = select.buffer,
         }
     )
@@ -21,7 +21,6 @@ local function refactor()
     return chat.ask('Refactor the selected code', {
         model = 'gpt-4.1',
         selection = selection,
-        context = { 'buffer' },
     })
 end
 
