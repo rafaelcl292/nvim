@@ -3,5 +3,5 @@
 - neovim-remote
 
 ```bash
-pip3 install neovim-remote
+uv tool install neovim-remote
 ```
