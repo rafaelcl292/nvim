@@ -61,35 +61,10 @@ function M.config()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     vim.lsp.enable('gleam')
     vim.lsp.enable('ty')
+    vim.lsp.enable('zls')
 
     require('mason').setup()
     require('mason-lspconfig').setup({
-        function(server_name)
-            require('lspconfig')[server_name].setup({
-                capabilities = capabilities,
-            })
-        end,
-        ['lua_ls'] = function()
-            require('lspconfig').lua_ls.setup({
-                capabilities = capabilities,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            disable = { 'missing-fields' },
-                        },
-                    },
-                },
-            })
-        end,
-        ['clangd'] = function()
-            require('lspconfig').clangd.setup({
-                capabilities = capabilities,
-                cmd = {
-                    'clangd',
-                    '--offset-encoding=utf-16',
-                },
-            })
-        end,
         ensure_installed = {
             'rust_analyzer',
             'html',
@@ -99,8 +74,28 @@ function M.config()
             'ruff',
             'bashls',
         },
-        automatic_installation = true,
-        automatic_enable = true,
+        automatic_enable = {
+            exclude = { 'lua_ls', 'clangd' },
+        },
+    })
+
+    require('lspconfig').lua_ls.setup({
+        capabilities = capabilities,
+        settings = {
+            Lua = {
+                diagnostics = {
+                    disable = { 'missing-fields' },
+                },
+            },
+        },
+    })
+
+    require('lspconfig').clangd.setup({
+        capabilities = capabilities,
+        cmd = {
+            'clangd',
+            '--offset-encoding=utf-16',
+        },
     })
 
     vim.api.nvim_create_autocmd('LspAttach', {

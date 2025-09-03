@@ -1,29 +1,3 @@
-local function selection(source)
-    local select = require('CopilotChat.select')
-    return select.visual(source) or select.buffer(source)
-end
-
-local function commit_message()
-    local chat = require('CopilotChat')
-    local select = require('CopilotChat.select')
-    return chat.ask(
-        'Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block.',
-        {
-            model = 'gpt-4.1',
-            sticky = { '##git://diff/staged' },
-            selection = select.buffer,
-        }
-    )
-end
-
-local function refactor()
-    local chat = require('CopilotChat')
-    return chat.ask('Refactor the selected code', {
-        model = 'gpt-4.1',
-        selection = selection,
-    })
-end
-
 local system_prompt = [[
 Follow the user's instructions exactly.
 Keep responses brief and impersonal.
@@ -47,15 +21,14 @@ return {
         { 'nvim-lua/plenary.nvim', branch = 'master' },
     },
     keys = {
-        { '<leader>j', '<cmd>CopilotChatToggle<cr>', mode = { 'n', 'v' } },
-        { '<leader>J', refactor, mode = { 'n', 'v' } },
-        { 'gC', commit_message, mode = { 'n', 'v' } },
+        { '<leader>j', '<cmd>CopilotChatToggle<cr>', mode = 'v' },
+        { '<leader>j', 'ggVG<cmd>CopilotChatToggle<cr>', mode = 'n' },
+        { 'gC', '<cmd>CopilotChatCommit<cr>', mode = { 'n', 'v' } },
     },
     event = 'VeryLazy',
     config = {
         model = 'gpt-4.1',
         system_prompt = system_prompt,
-        selection = selection,
         debug = false,
         show_help = false,
         mappings = {
