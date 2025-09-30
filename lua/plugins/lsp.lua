@@ -79,7 +79,7 @@ function M.config()
         },
     })
 
-    require('lspconfig').lua_ls.setup({
+    vim.lsp.config('lua_ls', {
         capabilities = capabilities,
         settings = {
             Lua = {
@@ -90,7 +90,7 @@ function M.config()
         },
     })
 
-    require('lspconfig').clangd.setup({
+    vim.lsp.config('clangd', {
         capabilities = capabilities,
         cmd = {
             'clangd',
