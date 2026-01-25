@@ -26,7 +26,7 @@ return {
         { 'gC', '<cmd>CopilotChatCommit<cr>', mode = { 'n', 'v' } },
     },
     event = 'VeryLazy',
-    config = {
+    opts = {
         model = 'gpt-4.1',
         system_prompt = system_prompt,
         debug = false,
