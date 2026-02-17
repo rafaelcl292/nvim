@@ -2,7 +2,7 @@ local M = {
     'nvim-telescope/telescope.nvim',
     dependencies = {
         'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope-fzf-native.nvim',
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         'nvim-tree/nvim-web-devicons',
         'nvim-telescope/telescope-ui-select.nvim',
         'debugloop/telescope-undo.nvim',
