@@ -55,6 +55,7 @@ return {
                 },
             },
         },
+        lazygit = { win = { width = 0, height = 0 } },
         quickfile = { enabled = true },
         words = { enabled = true },
     },
@@ -72,5 +73,6 @@ return {
         { '<leader>fu', undo, desc = 'Undo history' },
         { 'gd', lsp_definitions, desc = 'Goto definition' },
         { 'gR', lsp_references, desc = 'LSP references', nowait = true },
+        { '<leader>g', function() Snacks.lazygit() end, desc = 'LazyGit' },
     },
 }
