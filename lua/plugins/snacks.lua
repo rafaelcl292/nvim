@@ -24,7 +24,6 @@ local function find_dirs()
         end,
     })
 end
-
 local function help() Snacks.picker.help() end
 local function recent() Snacks.picker.recent() end
 local function buffers() Snacks.picker.buffers() end
@@ -36,6 +35,10 @@ local function lsp_references() Snacks.picker.lsp_references() end
 local function lines() Snacks.picker.lines() end
 local function undo() Snacks.picker.undo() end
 local function lsp_definitions() Snacks.picker.lsp_definitions() end
+local function lazygit() Snacks.lazygit() end
+local function git_branches() Snacks.picker.git_branches() end
+local function git_status() Snacks.picker.git_status() end
+local function git_stash() Snacks.picker.git_stash() end
 
 return {
     'folke/snacks.nvim',
@@ -73,6 +76,11 @@ return {
         { '<leader>fu', undo, desc = 'Undo history' },
         { 'gd', lsp_definitions, desc = 'Goto definition' },
         { 'gR', lsp_references, desc = 'LSP references', nowait = true },
-        { '<leader>g', function() Snacks.lazygit() end, desc = 'LazyGit' },
+
+        -- git
+        { '<leader>g', lazygit, desc = 'LazyGit' },
+        { '<leader>b', git_branches, desc = 'Git Branches' },
+        { '<leader>a', git_status, desc = 'Git Status' },
+        { '<leader>+', git_stash, desc = 'Git Stash' },
     },
 }
