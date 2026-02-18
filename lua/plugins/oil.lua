@@ -23,6 +23,10 @@ M.keys = {
     { '<leader>e', '<cmd>Oil<cr>' },
 }
 
+M.dependencies = {
+    'nvim-tree/nvim-web-devicons',
+}
+
 M.lazy = false
 
 return M

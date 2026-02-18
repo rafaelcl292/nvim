@@ -18,10 +18,17 @@ local function find_dirs()
             )
         end,
         title = 'Find Directories',
-        confirm = function(picker, item)
-            picker:close()
-            if item then vim.cmd('cd ' .. vim.fn.fnameescape(item.file)) end
-        end,
+        actions = {
+            confirm = function(picker, item)
+                picker:close()
+                if item then
+                    local uv = vim.uv or vim.loop
+                    local path = item.file:sub(1, 1) == '/' and item.file
+                        or (vim.fs.normalize(uv.cwd() or '.') .. '/' .. item.file)
+                    require('oil').open(path)
+                end
+            end,
+        },
     })
 end
 local function help() Snacks.picker.help() end
