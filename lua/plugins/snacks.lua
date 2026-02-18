@@ -29,73 +29,74 @@ local function find_dirs()
         },
     })
 end
-local function help() Snacks.picker.help() end
-local function recent() Snacks.picker.recent() end
-local function buffers() Snacks.picker.buffers() end
-local function commands() Snacks.picker.commands() end
-local function keymaps() Snacks.picker.keymaps() end
-local function diagnostics() Snacks.picker.diagnostics() end
-local function command_history() Snacks.picker.command_history() end
-local function lsp_references() Snacks.picker.lsp_references() end
-local function lines() Snacks.picker.lines() end
-local function undo() Snacks.picker.undo() end
-local function lsp_definitions() Snacks.picker.lsp_definitions() end
-local function lazygit() Snacks.lazygit() end
-local function git_branches() Snacks.picker.git_branches() end
-local function git_status() Snacks.picker.git_status() end
-local function git_stash() Snacks.picker.git_stash() end
-local function git_log() Snacks.picker.git_log() end
 
-return {
-    'folke/snacks.nvim',
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
-    opts = {
-        input = { enabled = true },
-        notifier = { enabled = false },
-        picker = {
-            enabled = true,
-            win = {
-                input = {
-                    keys = {
-                        ['<Esc>'] = { 'close', mode = { 'i', 'n' } },
-                        ['<C-j>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
-                        ['<C-k>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
-                    },
+local function lazygit() Snacks.lazygit() end
+
+local M = { 'folke/snacks.nvim' }
+
+M.priority = 1000
+M.lazy = false
+
+---@type snacks.Config
+M.opts = {
+    input = { enabled = true },
+    notifier = { enabled = false },
+    picker = {
+        enabled = true,
+        win = {
+            input = {
+                keys = {
+                    ['<Esc>'] = { 'close', mode = { 'i', 'n' } },
+                    ['<C-j>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
+                    ['<C-k>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
                 },
-                list = {
-                    keys = {
-                        ['<C-j>'] = 'preview_scroll_down',
-                        ['<C-k>'] = 'preview_scroll_up',
-                    },
+            },
+            list = {
+                keys = {
+                    ['<C-j>'] = 'preview_scroll_down',
+                    ['<C-k>'] = 'preview_scroll_up',
                 },
             },
         },
-        lazygit = { win = { width = 0, height = 0 } },
-        quickfile = { enabled = true },
-        words = { enabled = true },
     },
-    keys = {
-        { '<leader>fd', find_dirs, desc = 'Find directories' },
-        { '<leader>fh', help, desc = 'Help pages' },
-        { '<leader>fo', recent, desc = 'Recent files' },
-        { '<leader>fb', buffers, desc = 'Buffers' },
-        { '<leader>fc', commands, desc = 'Commands' },
-        { '<leader>fk', keymaps, desc = 'Keymaps' },
-        { '<leader>fD', diagnostics, desc = 'Diagnostics' },
-        { '<leader>f:', command_history, desc = 'Command history' },
-        { '<leader>fr', lsp_references, desc = 'LSP references' },
-        { '<leader>f.', lines, desc = 'Buffer lines' },
-        { '<leader>fu', undo, desc = 'Undo history' },
-        { 'gd', lsp_definitions, desc = 'Goto definition' },
-        { 'gR', lsp_references, desc = 'LSP references', nowait = true },
-
-        -- git
-        { '<leader>g', lazygit, desc = 'LazyGit' },
-        { '<leader>b', git_branches, desc = 'Git Branches' },
-        { '<leader>a', git_status, desc = 'Git Status' },
-        { '<leader>+', git_stash, desc = 'Git Stash' },
-        { '<leader>l', git_log, desc = 'Git Log' },
-    },
+    lazygit = { win = { width = 0, height = 0 } },
+    quickfile = { enabled = true },
+    words = { enabled = true },
 }
+
+M.keys = {
+    { '<leader>fd', find_dirs, desc = 'Find directories' },
+    { '<leader>fh', function() Snacks.picker.help() end, desc = 'Help pages' },
+    { '<leader>fo', function() Snacks.picker.recent() end, desc = 'Recent files' },
+    { '<leader>fb', function() Snacks.picker.buffers() end, desc = 'Buffers' },
+    { '<leader>fc', function() Snacks.picker.commands() end, desc = 'Commands' },
+    { '<leader>fk', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
+    { '<leader>fD', function() Snacks.picker.diagnostics() end, desc = 'Diagnostics' },
+    {
+        '<leader>f:',
+        function() Snacks.picker.command_history() end,
+        desc = 'Command history',
+    },
+    {
+        '<leader>fr',
+        function() Snacks.picker.lsp_references() end,
+        desc = 'LSP references',
+    },
+    { '<leader>f.', function() Snacks.picker.lines() end, desc = 'Buffer lines' },
+    { '<leader>fu', function() Snacks.picker.undo() end, desc = 'Undo history' },
+    { 'gd', function() Snacks.picker.lsp_definitions() end, desc = 'Goto definition' },
+    {
+        'gR',
+        function() Snacks.picker.lsp_references() end,
+        desc = 'LSP references',
+        nowait = true,
+    },
+
+    { '<leader>g', lazygit, desc = 'LazyGit' },
+    { '<leader>b', function() Snacks.picker.git_branches() end, desc = 'Git Branches' },
+    { '<leader>a', function() Snacks.picker.git_status() end, desc = 'Git Status' },
+    { '<leader>+', function() Snacks.picker.git_stash() end, desc = 'Git Stash' },
+    { '<leader>l', function() Snacks.picker.git_log() end, desc = 'Git Log' },
+}
+
+return M
