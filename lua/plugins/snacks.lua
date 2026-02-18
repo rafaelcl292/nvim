@@ -2,8 +2,7 @@ local function find_dirs()
     Snacks.picker.pick({
         source = 'files',
         finder = function(_, ctx)
-            local uv = vim.uv or vim.loop
-            local cwd = vim.fs.normalize(uv.cwd() or '.')
+            local cwd = vim.fs.normalize(vim.uv.cwd() or '.')
             return require('snacks.picker.source.proc').proc(
                 ctx:opts({
                     cmd = 'fdfind',
@@ -22,9 +21,8 @@ local function find_dirs()
             confirm = function(picker, item)
                 picker:close()
                 if item then
-                    local uv = vim.uv or vim.loop
                     local path = item.file:sub(1, 1) == '/' and item.file
-                        or (vim.fs.normalize(uv.cwd() or '.') .. '/' .. item.file)
+                        or (vim.fs.normalize(vim.uv.cwd() or '.') .. '/' .. item.file)
                     require('oil').open(path)
                 end
             end,
