@@ -27,7 +27,7 @@ local function on_attach(args)
 
     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<CR>', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>C', vim.lsp.buf.code_action, opts)
 
     if client and client.server_capabilities.documentHighlightProvider then
         local highlight_augroup =

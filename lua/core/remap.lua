@@ -37,6 +37,8 @@ bind('<C-a>', '<Home>', 'c', { noremap = true })
 -- previous file
 bind('<leader><Tab>', '<C-^>')
 
+bind('<leader>c', ':terminal git commit<CR>')
+
 -- move
 bind('J', [[:<c-u>silent! '<,'> m '>+1<CR>gv=gv]], 'v')
 bind('K', [[:<c-u>silent! '<,'> m '<-2<CR>gv=gv]], 'v')
