@@ -46,6 +46,7 @@ local function lazygit() Snacks.lazygit() end
 local function git_branches() Snacks.picker.git_branches() end
 local function git_status() Snacks.picker.git_status() end
 local function git_stash() Snacks.picker.git_stash() end
+local function git_log() Snacks.picker.git_log() end
 
 return {
     'folke/snacks.nvim',
@@ -61,6 +62,14 @@ return {
                 input = {
                     keys = {
                         ['<Esc>'] = { 'close', mode = { 'i', 'n' } },
+                        ['<C-j>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
+                        ['<C-k>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
+                    },
+                },
+                list = {
+                    keys = {
+                        ['<C-j>'] = 'preview_scroll_down',
+                        ['<C-k>'] = 'preview_scroll_up',
                     },
                 },
             },
@@ -89,5 +98,6 @@ return {
         { '<leader>b', git_branches, desc = 'Git Branches' },
         { '<leader>a', git_status, desc = 'Git Status' },
         { '<leader>+', git_stash, desc = 'Git Stash' },
+        { '<leader>l', git_log, desc = 'Git Log' },
     },
 }
