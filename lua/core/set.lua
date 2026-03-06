@@ -56,7 +56,5 @@ vim.g.clipboard = {
     cache_enabled = 0,
 }
 
-vim.g.zig_fmt_autosave = 0
-
 -- leader key
 vim.g.mapleader = ' '
