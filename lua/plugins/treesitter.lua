@@ -1,14 +1,4 @@
-local opts = {
-    ignore_install = { 'tmux', 'make' },
-    sync_install = false,
-    auto_install = true,
-    highlight = {
-        enable = true,
-    },
-}
-
-
-opts.textobjects = {
+local textobjects = {
     move = {
         enable = true,
         set_jumps = false,
@@ -72,11 +62,37 @@ end
 return {
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
+        lazy = false,
         build = ':TSUpdate',
-        config = function() require('nvim-treesitter.configs').setup(opts) end,
-        event = 'VeryLazy',
+        init = function()
+            vim.g.loaded_nvim_treesitter = 1
+        end,
+        config = function()
+            vim.api.nvim_create_autocmd('FileType', {
+                callback = function() pcall(vim.treesitter.start) end,
+            })
+        end,
     },
-    { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VeryLazy' },
+    {
+        'lewis6991/ts-install.nvim',
+        lazy = false,
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            require('ts-install').setup({
+                auto_install = true,
+                ignore_install = { 'tmux', 'make' },
+            })
+        end,
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
+        event = 'VeryLazy',
+        config = function()
+            require('nvim-treesitter-textobjects').setup({ textobjects = textobjects })
+        end,
+    },
     { 'Wansmer/treesj', config = treesj_config, event = 'VeryLazy' },
     { 'windwp/nvim-ts-autotag', config = true, event = 'InsertEnter' },
 }

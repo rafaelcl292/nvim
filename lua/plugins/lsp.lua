@@ -65,15 +65,7 @@ function M.config()
 
     require('mason').setup()
     require('mason-lspconfig').setup({
-        ensure_installed = {
-            'rust_analyzer',
-            'html',
-            'emmet_ls',
-            'lua_ls',
-            'gopls',
-            'ruff',
-            'bashls',
-        },
+
         automatic_enable = {
             exclude = { 'lua_ls', 'clangd' },
         },
