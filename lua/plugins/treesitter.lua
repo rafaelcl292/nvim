@@ -7,29 +7,6 @@ local opts = {
     },
 }
 
-opts.ensure_installed = {
-    'bash',
-    'markdown',
-    'markdown_inline',
-    'c',
-    'cpp',
-    'css',
-    'go',
-    'gomod',
-    'html',
-    'javascript',
-    'jsdoc',
-    'json',
-    'jsonc',
-    'lua',
-    'python',
-    'regex',
-    'rust',
-    'toml',
-    'typescript',
-    'yaml',
-    'diff',
-}
 
 opts.textobjects = {
     move = {
