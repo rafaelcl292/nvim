@@ -3,8 +3,8 @@ local M = { 'neovim/nvim-lspconfig' }
 M.event = 'VeryLazy'
 
 M.dependencies = {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
     'saghen/blink.cmp',
     {
         'folke/lazydev.nvim',
@@ -65,9 +65,9 @@ function M.config()
 
     require('mason').setup()
     require('mason-lspconfig').setup({
-
+        ensure_installed = {},
         automatic_enable = {
-            exclude = { 'lua_ls', 'clangd' },
+            exclude = { 'clangd' },
         },
     })
 
