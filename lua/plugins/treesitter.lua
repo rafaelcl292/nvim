@@ -65,9 +65,6 @@ return {
         branch = 'main',
         lazy = false,
         build = ':TSUpdate',
-        init = function()
-            vim.g.loaded_nvim_treesitter = 1
-        end,
         config = function()
             vim.api.nvim_create_autocmd('FileType', {
                 callback = function() pcall(vim.treesitter.start) end,
