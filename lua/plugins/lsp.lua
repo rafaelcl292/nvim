@@ -9,11 +9,16 @@ M.dependencies = {
     {
         'folke/lazydev.nvim',
         ft = 'lua',
-        opts = {
-            library = {
-                { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-            },
-        },
+        opts = function()
+            local library = { '${3rd}/luv/library' }
+            for _, plugin in pairs(require('lazy.core.config').plugins) do
+                if vim.uv.fs_stat(plugin.dir .. '/lua') then
+                    library[#library + 1] = plugin.dir
+                end
+            end
+            table.sort(library)
+            return { library = library }
+        end,
     },
 }
 
