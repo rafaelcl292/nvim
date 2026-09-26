@@ -10,6 +10,8 @@ M.dependencies = {
         'folke/lazydev.nvim',
         ft = 'lua',
         opts = function()
+            local config_dir = vim.fn.stdpath('config')
+            config_dir = vim.fs.normalize(vim.uv.fs_realpath(config_dir) or config_dir)
             local library = { '${3rd}/luv/library' }
             for _, plugin in pairs(require('lazy.core.config').plugins) do
                 if vim.uv.fs_stat(plugin.dir .. '/lua') then
@@ -17,7 +19,15 @@ M.dependencies = {
                 end
             end
             table.sort(library)
-            return { library = library }
+            return {
+                library = library,
+                enabled = function(root_dir)
+                    if vim.g.lazydev_enabled == false then return false end
+                    root_dir = vim.fs.normalize(vim.uv.fs_realpath(root_dir) or root_dir)
+                    return root_dir == config_dir
+                        or vim.startswith(root_dir, config_dir .. '/')
+                end,
+            }
         end,
     },
 }
